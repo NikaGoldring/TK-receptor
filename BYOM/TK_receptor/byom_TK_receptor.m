@@ -56,34 +56,85 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % * 1  for no transformation of the data, then normal likelihood
 
 % Internal concentrations of THI in Gammarus pulex in [unit] 
-DATA{1} = [0.5	1.2	1.2	1.2	1.2	1.2	1.2	1.2	1.2
-    0	2.634920501	1.128226067	2.067572648	1.239467263	2.133021081	3.968671089	2.232029925	1.71563171
-    0.25	346.903685	326.4266006	330.6922294	NaN	NaN	NaN	NaN	NaN
-    0.5	616.6576112	592.2330082	677.762585	NaN	NaN	NaN	NaN	NaN
-    0.75	762.6419853	750.075518	854.8605579	840.4228865	NaN	NaN	NaN	NaN
-    1	1187.964104	1224.36273	1075.951767	1121.508449	NaN	NaN	NaN	NaN
-    2	2027.432656	2037.744655	1638.995127	NaN	NaN	NaN	NaN	NaN
-    3	2524.564775	2471.508177	2675.329348	NaN	NaN	NaN	NaN	NaN
-    4	2685.458367	2782.061779	2345.599143	3347.038305	NaN	NaN	NaN	NaN
-    4.25	2194.05948	2119.389788	2501.947601	3182.207062	NaN	NaN	NaN	NaN
-    4.5	2309.995772	2353.777302	2290.190177	2226.329017	NaN	NaN	NaN	NaN
-    4.75	2462.489785	2316.686876	2141.947838	1862.544099	NaN	NaN	NaN	NaN
-    5	1772.724311	2170.229973	2019.317227	1786.46631	NaN	NaN	NaN	NaN
-    6	2076.314829	1390.663864	742.5848544	NaN	NaN	NaN	NaN	NaN
-    7	1800.811532	1862.208204	1223.001179	1050.560266	NaN	NaN	NaN	NaN
-    8	1920.780515	1490.778938	1228.435888	1602.794556	NaN	NaN	NaN	NaN];
+% AMD NOTE: times are actually slightly different in scen. 2, should be
+% chaned (if I don't forget)
+DATA{1} = [ 0.5	    1	    1	    2	    2
+            0.000	0.0000	0.0000	0.0000	0.0000
+            0.124	0.2573	0.1895	0.1642	0.1945
+            0.250	0.3612	0.4987	0.3484	0.2767
+            0.417	0.5398	0.5323	0.3869	0.3912
+            1.001	0.7147	0.7789	0.5938	0.5933
+            1.417	0.8121	0.7184	0.6600	0.6809
+            1.997	0.7640	0.9192	0.6975	0.7351
+            2.125	0.6125	0.5869	0.4367	0.5553
+            2.250	0.5525	0.5186	0.3965	0.3968
+            2.417	0.4769	0.4182	0.4110	0.3645
+            3.000	0.3204	0.3570	0.2725	0.3231
+            4.000	0.3317	0.2622	0.2880	0.3998
+            6.000	0.2856	0.2446	0.2563	0.1707
+            8.000	0.2471	0.1902	0.2894	0.3160
+            10.001	0.2462	0.2213	NaN     NaN	];
 
 % If needed, weights for individual measurements can be defined
 % For this, uncommend the following line and specify your weights
 
 % W{1} = 21 * ones(size(DATA{1})-1); % each point is a pooled sample of 21 animals
 
+% In this data set, exposure was time-varying and reported as a series of
+% concentrations over time. Here, the scenario is used as a linear forcing
+% series (which has an analytical solution, and is thus much faster than
+% the ODE version). Double time entries are used, which is more efficient,
+% and probably more accurate.
+Cw1 = [ 0       1
+        0.000	0.2206
+        0.124	0.2206
+        0.250	0.2206
+        0.417	0.2206
+        1.001	0.2206
+        1.417	0.2206
+        1.997	0.2206
+        2.125	0
+        2.250	0
+        2.417	0
+        3.000	0
+        4.000	0
+        6.000	0
+        8.000	0
+        10.001	0 ];
+
+Cw2 = [ 0       2
+        0.000	0.2307
+        0.124	0.2307
+        0.249	0.2307
+        0.417	0.2307
+        0.999	0.2307
+        1.417	0.2307
+        2.002	0
+        2.124	0
+        2.250	0
+        2.417	0
+        3.000	0
+        4.000	0
+        6.000	0
+        8.000	0 ];
+
+make_scen(4,Cw1,Cw2); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)
+
+glo.dep_t_scen = [1  2     
+                  2  2];    
+
+% Create a table with nicer labels for the legends
+Scenario = [1;2];
+Label = {'Scenario 1';'Scenario 2'};
+glo.LabelTable = table(Scenario,Label); % create a Matlab table for the labels
+
 %% Initial values for the state variables
 % Initial states, scenarios in columns, states in rows. First row are the
 % 'names' of all scenarios.
 
-X0mat = [1.2  % the scenarios (here nominal concentrations) 
-         0];  % initial values state 1 (internal concentrations)
+X0mat(1,:) = [1 2 ]; % scenarios (concentrations or identifiers)
+X0mat(2,:) = 0;      % initial values state 1 (internal concentrations)
+X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 
 
 %% Initial values for the model parameters
@@ -92,6 +143,7 @@ X0mat = [1.2  % the scenarios (here nominal concentrations)
 % syntax: par.name = [startvalue fit(0/1) minval maxval];
 par.ke    = [0.2    1 0.01 100 1];  % elimination rate constant, d-1
 par.ku    = [900    1 0.01 1e6 1];  % uptake rate constant, L/kg/d
+par.B_MAX = [28.4   0 0    100 1];  % maximal binding capacity, µmol/kg
 
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
@@ -99,6 +151,7 @@ par.ku    = [900    1 0.01 1e6 1];  % uptake rate constant, L/kg/d
 
 % specify the y-axis labels for each state variable
 glo.ylab{1} = ['internal concentration (',char(181),'mol/kg)'];
+glo.ylab{2} = ['receptor-antagonist complex concentration (unit)'];
 % specify the x-axis label (same for all states)
 glo.xlab    = 'time (days)';
 glo.leglab1 = ''; % legend label before the 'scenario' number
@@ -114,7 +167,7 @@ prelim_checks % script to perform some preliminary checks and set things up
 % Options for the optimsation routine can be set using opt_optim. Options
 % for the ODE solver are part of the global glo. 
 
-opt_optim.it = 1; % show iterations of the simplex optimisation (1, default) or not (0)
+opt_optim.it = 0; % show iterations of the simplex optimisation (1, default) or not (0)
 opt_plot.bw  = 1; % plot in black and white
 opt_plot.cn  = 0; % if set to 1, connect model line to points (only for bw=1)
 glo.useode   = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
@@ -132,11 +185,11 @@ calc_and_plot(par_out,opt_plot); % calculate model lines and plot them
 % 
 % Options for profiling can be set using opt_prof (see prelim_checks.m).
 
-opt_prof.detail   = 2; % detailed (1) or a coarse (2) calculation
-opt_prof.subopt   = 10; % number of sub-optimisations to perform to increase robustness
-
-% UNCOMMENT LINE(S) TO CALCULATE
-par_better = calc_proflik(par_out,{'all'},opt_prof,opt_optim);  % calculate a profile
-if ~isempty(par_better)                 % if the profiling found a better optimum ...
-    calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
-end
+% opt_prof.detail   = 2; % detailed (1) or a coarse (2) calculation
+% opt_prof.subopt   = 10; % number of sub-optimisations to perform to increase robustness
+% 
+% % UNCOMMENT LINE(S) TO CALCULATE
+% par_better = calc_proflik(par_out,{'all'},opt_prof,opt_optim);  % calculate a profile
+% if ~isempty(par_better)                 % if the profiling found a better optimum ...
+%     calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
+% end

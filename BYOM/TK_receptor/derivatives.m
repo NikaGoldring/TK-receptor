@@ -34,8 +34,8 @@ function dX = derivatives(t,X,par,c,glo)
 % The state variables enter this function in the vector _X_. Here, we give
 % them a more handy name.
 
-CS = X(1); % state 1 is the scaled internal concentration in structure at previous time point
-CL = X(2); % state 2 is the scaled internal concentration in lipids at previous time point
+Ci   = X(1); % state 1 (internal concentrations) at previous time point
+N_RL = X(2); % state 2 (receptor-antagonist complex concentration) at previous time point
 
 % these concentrations are both expressed on volume basis.
 
@@ -45,24 +45,26 @@ CL = X(2); % state 2 is the scaled internal concentration in lipids at previous 
 % The 1 between parentheses is needed as each parameter has 5 associated
 % values.
 
-kS   = par.keS(1);    % elimination rate constant structure
-PSW  = par.kuS(1)/kS; % bioconcentration factor structure-water
-kL   = par.keL(1);    % elimination rate constant lipids
-PLS  = par.kuL(1)/kL; % bioconcentration factor lipid-structure
+ke    = par.ke(1);    % elimination rate constant, d-1
+ku    = par.ku(1);    % uptake rate constant, L/kg/d
+B_MAX = par.B_MAX(1); % maximal binding capacity, µmol/kg (measured)
+
+%% Extract correct exposure for THIS time point
+% Allow for external concentrations to change over time, either
+% continuously, or in steps, or as a static renewal with first-order
+% disappearance. For constant exposure, the code in this section is skipped
+% (and could also be removed).
+
+if glo.timevar(1) == 1 % if we are warned that we have a time-varying concentration ...
+    c = read_scen(-1,c,t,glo); % use read_scen to derive actual exposure concentration
+    % Note: this has glo as input to the function to save time!
+    % the -1 lets read_scen know we are calling from derivatives (so need one c)
+end
 
 %% Calculate the derivatives
 % This is the actual model, specified as a system of two ODEs:
 
-FLS = glo.FLS; % lipid content (VL/VS)
+dCi = ku * c - ke * Ci ; % first order bioconcentration
+dN_RL = Ci * max(0, B_MAX - N_RL); % first order bioconcentration
 
-if t>4 && c==1.2 % depuration phase starts at t=4
-    c=0;
-end
-% This is not such a great solution, but it works well enough. Better to
-% break up the time vector and solve in two parts (this strategy is used in
-% the TKTD packages for BYOM).
-
-dCS = kS*(PSW*c-CS) - kL*FLS*(PLS*CS-CL); % first order bioconcentration
-dCL = kL*(PLS*CS-CL); % first order bioconcentration
-
-dX = [dCS;dCL;0]; % collect all derivatives in one vector dX
+dX = [dCi;dN_RL]; % collect all derivatives in one vector dX
