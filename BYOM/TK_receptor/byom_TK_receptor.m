@@ -20,6 +20,14 @@
 %  Copyright (c) 2012-2021, Tjalling Jager, all rights reserved.
 %  This source code is licensed under the MIT-style license found in the
 %  LICENSE.txt file in the root directory of BYOM. 
+%
+%
+% September 2022 
+% Modifications by AMD to include (irrevirsible) receptor binding of an 
+% antagonist. Here with the example of the antagonist thiacloprid (THI) 
+% binding to the nicotinic-acetylcholine receptor (nAChR) as observed 
+% in Gammarus pulex. in Raths et al. 202X
+
 
 %% Initial things
 % Make sure that this script is in a directory somewhere *below* the BYOM
@@ -29,8 +37,8 @@ clear, clear global % clear the workspace and globals
 global DATA W X0mat % make the data set and initial states global variables
 global glo          % allow for global parameters in structure glo
 diary off           % turn of the diary function (if it is accidentaly on)
-% set(0,'DefaultFigureWindowStyle','docked'); % collect all figure into one window with tab controls
-set(0,'DefaultFigureWindowStyle','normal'); % separate figure windows
+set(0,'DefaultFigureWindowStyle','docked'); % collect all figure into one window with tab controls
+% set(0,'DefaultFigureWindowStyle','normal'); % separate figure windows
 
 pathdefine(0) % set path to the BYOM/engine directory (option 1 uses parallel toolbox)
 glo.basenm  = mfilename; % remember the filename for THIS file for the plots
@@ -47,6 +55,7 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % * 0.5 for square-root transform the data, then normal likelihood
 % * 1  for no transformation of the data, then normal likelihood
 
+% Internal concentrations of THI in Gammarus pulex in [unit] 
 DATA{1} = [0.5	1.2	1.2	1.2	1.2	1.2	1.2	1.2	1.2
     0	2.634920501	1.128226067	2.067572648	1.239467263	2.133021081	3.968671089	2.232029925	1.71563171
     0.25	346.903685	326.4266006	330.6922294	NaN	NaN	NaN	NaN	NaN
@@ -64,14 +73,18 @@ DATA{1} = [0.5	1.2	1.2	1.2	1.2	1.2	1.2	1.2	1.2
     7	1800.811532	1862.208204	1223.001179	1050.560266	NaN	NaN	NaN	NaN
     8	1920.780515	1490.778938	1228.435888	1602.794556	NaN	NaN	NaN	NaN];
 
-W{1} = 21 * ones(size(DATA{1})-1); % each point is a pooled sample of 21 animals
+% If needed, weights for individual measurements can be defined
+% For this, uncommend the following line and specify your weights
+
+% W{1} = 21 * ones(size(DATA{1})-1); % each point is a pooled sample of 21 animals
 
 %% Initial values for the state variables
 % Initial states, scenarios in columns, states in rows. First row are the
 % 'names' of all scenarios.
 
-X0mat = [1.2    % the scenarios (here nominal concentrations) 
+X0mat = [1.2  % the scenarios (here nominal concentrations) 
          0];  % initial values state 1 (internal concentrations)
+
 
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
@@ -104,7 +117,7 @@ prelim_checks % script to perform some preliminary checks and set things up
 opt_optim.it = 1; % show iterations of the simplex optimisation (1, default) or not (0)
 opt_plot.bw  = 1; % plot in black and white
 opt_plot.cn  = 0; % if set to 1, connect model line to points (only for bw=1)
-glo.useode   = 0; % use the analytical solution in simplefun.m
+glo.useode   = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
 
 % optimise and plot (fitted parameters in par_out)
 par_out = calc_optim(par,opt_optim); % start the optimisation
