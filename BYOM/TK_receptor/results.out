@@ -1023,3 +1023,87 @@ B_MAX      0.3040 (fit: 1, initial: 0.29)
 Kd         0.5903 (fit: 1, initial: 0.6) 
 =================================================================================
 Time required: 2.1 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor 
+   Analysis date : 01-Aug-2022 (15:30) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 15x4, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 413 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -23.31 (AIC=-36.61). 
+=================================================================================
+ke          3.999 (fit: 1, initial: 3.121) 
+ku          10.20 (fit: 1, initial: 7.547) 
+kon       0.01000 (fit: 1, initial:  1) 
+B_MAX      0.3727 (fit: 1, initial: 0.29) 
+Kd         0.2599 (fit: 1, initial: 0.6) 
+=================================================================================
+Time required: 2.9 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor 
+   Analysis date : 01-Aug-2022 (15:31) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 15x4, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 365 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -24.40 (AIC=-38.81). 
+=================================================================================
+ke          4.025 (fit: 1, initial: 3.121) 
+ku          10.85 (fit: 1, initial: 7.547) 
+kon        0.1118 (fit: 1, initial:  1) 
+B_MAX      0.5275 (fit: 1, initial: 0.29) 
+Kd         0.1232 (fit: 1, initial: 0.6) 
+=================================================================================
+Time required: 2.9 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor 
+   Analysis date : 01-Aug-2022 (15:31) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 15x4, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     No convergence, optimisation stopped on maximum number of iterations
+     Total 655 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -24.57 (AIC=-39.15). 
+=================================================================================
+ke          4.350 (fit: 1, initial: 3.121) 
+ku          11.03 (fit: 1, initial: 7.547) 
+kon         1.339 (fit: 1, initial:  1) 
+B_MAX      0.3276 (fit: 1, initial: 0.29) 
+Kd          3.334 (fit: 1, initial: 0.6) 
+=================================================================================
+Time required: 5.4 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor 
+   Analysis date : 01-Aug-2022 (15:46) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 15x4, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 268 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -21.32 (AIC=-32.64). 
+=================================================================================
+ke          3.341 (fit: 1, initial: 3.121) 
+ku          8.735 (fit: 1, initial: 7.547) 
+kon        0.9300 (fit: 1, initial:  1) 
+B_MAX      0.3387 (fit: 1, initial: 0.29) 
+Kd         0.4231 (fit: 1, initial: 0.6) 
+=================================================================================
+Time required: 2.3 secs

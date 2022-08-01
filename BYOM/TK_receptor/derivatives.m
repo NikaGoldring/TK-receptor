@@ -70,7 +70,7 @@ end
 dCi = ku * c - ke * Ci ; % first order bioconcentration
 
 if glo.R_mod == 1 
-    dN_RL =  kon * ( c * Kd / (Kd + c) ) ; % Michaelis-Menten kinetics 
+    dN_RL =  B_MAX * ( c / (Kd + c) ) ; % Michaelis-Menten kinetics 
 elseif glo.R_mod == 2
     dN_RL =  kon * c * max(0, B_MAX - N_RL) ; % second order kinetics
 else 
