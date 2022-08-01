@@ -981,3 +981,45 @@ B_MAX      0.4247 (fit: 1, initial: 0.29)
 Kd         0.3297 (fit: 1, initial: 0.6) 
 =================================================================================
 Time required: 3.0 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor 
+   Analysis date : 01-Aug-2022 (14:08) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 15x4, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 377 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -14.50 (AIC=-18.99). 
+=================================================================================
+ke          2.227 (fit: 1, initial: 3.121) 
+ku          6.071 (fit: 1, initial: 7.547) 
+kon         1.677 (fit: 1, initial:  1) 
+B_MAX      0.4247 (fit: 1, initial: 0.29) 
+Kd         0.3297 (fit: 1, initial: 0.6) 
+=================================================================================
+Time required: 2.9 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor 
+   Analysis date : 01-Aug-2022 (14:09) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 15x4, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 254 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -21.98 (AIC=-33.97). 
+=================================================================================
+ke          3.391 (fit: 1, initial: 3.121) 
+ku          8.837 (fit: 1, initial: 7.547) 
+kon        0.7335 (fit: 1, initial:  1) 
+B_MAX      0.3040 (fit: 1, initial: 0.29) 
+Kd         0.5903 (fit: 1, initial: 0.6) 
+=================================================================================
+Time required: 2.1 secs

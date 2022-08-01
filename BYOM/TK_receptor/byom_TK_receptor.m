@@ -168,7 +168,7 @@ prelim_checks % script to perform some preliminary checks and set things up
 % Options for the optimsation routine can be set using opt_optim. Options
 % for the ODE solver are part of the global glo. 
 
-glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 
 opt_optim.fit = 1; % fit the parameters (1), or don't (0)
 opt_optim.it  = 0; % show iterations of the simplex optimisation (1, default) or not (0)
