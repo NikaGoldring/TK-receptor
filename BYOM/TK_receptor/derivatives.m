@@ -47,7 +47,10 @@ N_RL = X(2); % state 2 (receptor-antagonist complex concentration) at previous t
 
 ke    = par.ke(1);    % elimination rate constant, d-1
 ku    = par.ku(1);    % uptake rate constant, L/kg/d
-B_MAX = par.B_MAX(1); % maximal binding capacity, µmol/kg (measured)
+kon   = par.kon(1);   % association of ligand-receptor complex
+%koff  = par.koff(1);  % dissociation of ligand-receptor complex
+B_MAX = par.B_MAX(1); % maximal binding capacity, µmol/kg 
+Kd = par.Kd(1);       % equilibrium dissociation constant, nmol 
 
 %% Extract correct exposure for THIS time point
 % Allow for external concentrations to change over time, either
@@ -65,6 +68,16 @@ end
 % This is the actual model, specified as a system of two ODEs:
 
 dCi = ku * c - ke * Ci ; % first order bioconcentration
-dN_RL = Ci * max(0, B_MAX - N_RL); % first order bioconcentration
 
-dX = [dCi;dN_RL]; % collect all derivatives in one vector dX
+if glo.R_mod == 1 
+    dN_RL =  kon * ( c * Kd / (Kd + c) ) ; % Michaelis-Menten kinetics 
+elseif glo.R_mod == 2
+    dN_RL =  kon * c * max(0, B_MAX - N_RL) ; % second order kinetics
+else 
+    print('Define a receptor kinetic (R_mod)')
+    return
+end
+
+dC_tot = dCi + dN_RL ; 
+
+dX = [dCi;dN_RL;dC_tot]; % collect all derivatives in one vector dX,
