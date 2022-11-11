@@ -56,24 +56,21 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % * 1  for no transformation of the data, then normal likelihood
 
 % Internal concentrations of THI in Gammarus pulex in [unit] 
-% AMD NOTE: times are actually slightly different in scen. 2, should be
-% chaned (if I don't forget)
-DATA{3} = [ 0.5	    1	    1	    2	    2
-            0.000	0.0000	0.0000	0.0000	0.0000
-            0.124	0.2573	0.1895	0.1642	0.1945
-            0.250	0.3612	0.4987	0.3484	0.2767
-            0.417	0.5398	0.5323	0.3869	0.3912
-            1.001	0.7147	0.7789	0.5938	0.5933
-            1.417	0.8121	0.7184	0.6600	0.6809
-            1.997	0.7640	0.9192	0.6975	0.7351
-            2.125	0.6125	0.5869	0.4367	0.5553
-            2.250	0.5525	0.5186	0.3965	0.3968
-            2.417	0.4769	0.4182	0.4110	0.3645
-            3.000	0.3204	0.3570	0.2725	0.3231
-            4.000	0.3317	0.2622	0.2880	0.3998
-            6.000	0.2856	0.2446	0.2563	0.1707
-            8.000	0.2471	0.1902	0.2894	0.3160
-            10.001	0.2462	0.2213	NaN     NaN	];
+
+DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
+            0.0	 0.0001	 0.0000	0.0000	0.0000	0.0000	0.0000
+            1.0	 0.2148	 0.1780	0.1789	0.7390	0.7474	0.7777
+            2.0	 0.3031	 0.2461	0.2827	0.7887	0.6594	0.8110
+            3.0	 0.2037	 0.2047	0.2073	0.2643	0.3133	0.2680
+            5.0	 0.1582	 0.1726	0.2434	0.2153	0.2072	0.2006
+            6.0	 0.2465	 0.2685	0.3154	0.7725	0.7111	0.7260
+            7.0	 0.2697	 0.2941	0.2847	0.7511	0.7651	0.7614
+            8.0	 0.1662	 0.1879	0.2158	0.2253	0.2285	0.2332
+           10.1	 0.2327	 0.2098	0.2296	0.2172	0.2323	0.1935
+           11.1	 0.2859	 0.3029	0.3853	0.7698	0.7397	0.7423
+           12.1	 0.3125	 0.3555	0.3843	0.7809	0.7601	0.8217
+           13.1	 0.2049	 0.2347	0.1889	0.2339	0.2339	0.2465
+           15.1	 0.1691	0.1914	0.2380	0.2100	0.1716	0.2111];
 
 % If needed, weights for individual measurements can be defined
 % For this, uncommend the following line and specify your weights
@@ -85,44 +82,26 @@ DATA{3} = [ 0.5	    1	    1	    2	    2
 % series (which has an analytical solution, and is thus much faster than
 % the ODE version). Double time entries are used, which is more efficient,
 % and probably more accurate.
-Cw1 = [ 0       1  
-        0.000	0.2206  % µmol/L
-        0.124	0.2206
-        0.250	0.2206
-        0.417	0.2206
-        1.001	0.2206
-        1.417	0.2206
-        1.997	0.2206
-        2.125	0
-        2.250	0
-        2.417	0
-        3.000	0
-        4.000	0
-        6.000	0
-        8.000	0
-        10.001	0 ];
+Cw1 = [ 0	1	    2       
+        0.0	0.0227	0.2193  % µmol/L
+        1.0	0.0227	0.2193
+        2.0	0	    0
+        3.0	0	    0
+        5.0	0.0227	0.2193
+        6.0	0.0227	0.2193
+        7.0	0	    0
+        8.0	0	    0
+       10.1	0.0227	0.2193
+       11.1	0.0227	0.2193
+       12.1	0	    0
+       13.1	0	    0
+       15.1	0	    0 ];
 
-Cw2 = [ 0       2
-        0.000	0.2307  % µmol/L
-        0.124	0.2307
-        0.249	0.2307
-        0.417	0.2307
-        0.999	0.2307
-        1.417	0.2307
-        2.002	0
-        2.124	0
-        2.250	0
-        2.417	0
-        3.000	0
-        4.000	0
-        6.000	0
-        8.000	0 ];
-
-make_scen(2,Cw1,Cw2); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
+make_scen(2,Cw1); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
 
 % Create a table with nicer labels for the legends
-Scenario = [1]; 
-Label = {'Alive'}; %;'Dead'
+Scenario = [1;2]; 
+Label = {'Pulse 1'; 'Pulse 2'}; 
 glo.LabelTable = table(Scenario,Label); % create a Matlab table for the labels
 
 %% Initial values for the state variables
@@ -168,7 +147,7 @@ prelim_checks % script to perform some preliminary checks and set things up
 % Options for the optimsation routine can be set using opt_optim. Options
 % for the ODE solver are part of the global glo. 
 
-glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 
 opt_optim.fit = 1; % fit the parameters (1), or don't (0)
 opt_optim.it  = 0; % show iterations of the simplex optimisation (1, default) or not (0)
