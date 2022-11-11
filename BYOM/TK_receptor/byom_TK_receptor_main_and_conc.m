@@ -58,22 +58,22 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % Internal concentrations of THI in Gammarus pulex in [unit] 
 % AMD NOTE: times are actually slightly different in scen. 2, should be
 % chaned (if I don't forget)
-DATA{3} = [ 0.5	    1	    1	    2	    2
-            0.000	0.0000	0.0000	0.0000	0.0000
-            0.124	0.2573	0.1895	0.1642	0.1945
-            0.250	0.3612	0.4987	0.3484	0.2767
-            0.417	0.5398	0.5323	0.3869	0.3912
-            1.001	0.7147	0.7789	0.5938	0.5933
-            1.417	0.8121	0.7184	0.6600	0.6809
-            1.997	0.7640	0.9192	0.6975	0.7351
-            2.125	0.6125	0.5869	0.4367	0.5553
-            2.250	0.5525	0.5186	0.3965	0.3968
-            2.417	0.4769	0.4182	0.4110	0.3645
-            3.000	0.3204	0.3570	0.2725	0.3231
-            4.000	0.3317	0.2622	0.2880	0.3998
-            6.000	0.2856	0.2446	0.2563	0.1707
-            8.000	0.2471	0.1902	0.2894	0.3160
-            10.001	0.2462	0.2213	NaN     NaN	];
+DATA{3} = [0.50	1	    1	    2	    2	    2	    3	    3	    3	    4	    4	    4	    5	    5	    5	    6	    6	    6
+           0.00	0.0000	0.0000	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           0.12	0.2573	0.1895	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           0.25	0.3612	0.4987	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           0.42	0.5398	0.5323	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           1.00	0.7147	0.7789	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           1.42	0.8121	0.7184	NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           2.00	0.7640	0.9192	0.2674	0.2467	0.2269	0.7314	0.7308	0.6980	4.4546	3.8172	3.9223	10.8444	9.7258	10.4270	35.5530	43.7306	36.7030
+           2.13	0.6125	0.5869	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           2.25	0.5525	0.5186	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN
+           2.42	0.4769	0.4182	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           3.00	0.3570	0.3204	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           4.00	0.2622	0.3317	0.2215	0.2506	0.2312	0.2830	0.2491	0.2046	0.2527	0.2420	0.2577	0.2627	0.2896	0.3041	0.4499	0.4797	0.2505
+           6.00	0.2856	0.2446	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+           8.00	0.2471	0.1902	NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
+          10.00	0.2462	0.2213	NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN    ];
 
 % If needed, weights for individual measurements can be defined
 % For this, uncommend the following line and specify your weights
@@ -85,44 +85,28 @@ DATA{3} = [ 0.5	    1	    1	    2	    2
 % series (which has an analytical solution, and is thus much faster than
 % the ODE version). Double time entries are used, which is more efficient,
 % and probably more accurate.
-Cw1 = [ 0       1  
-        0.000	0.2206  % µmol/L
-        0.124	0.2206
-        0.250	0.2206
-        0.417	0.2206
-        1.001	0.2206
-        1.417	0.2206
-        1.997	0.2206
-        2.125	0
-        2.250	0
-        2.417	0
-        3.000	0
-        4.000	0
-        6.000	0
-        8.000	0
-        10.001	0 ];
+Cw1 = [ 0	    1	    2	    3   	4	    5	    6
+        0.00	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265 % µmol/L
+        0.12	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
+        0.25	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
+        0.42	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
+        1.00	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
+        1.42	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
+        2.00	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
+        2.13	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        2.25	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        2.42	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        3.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        4.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        6.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        8.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+        10.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000 ];
 
-Cw2 = [ 0       2
-        0.000	0.2307  % µmol/L
-        0.124	0.2307
-        0.249	0.2307
-        0.417	0.2307
-        0.999	0.2307
-        1.417	0.2307
-        2.002	0
-        2.124	0
-        2.250	0
-        2.417	0
-        3.000	0
-        4.000	0
-        6.000	0
-        8.000	0 ];
-
-make_scen(2,Cw1,Cw2); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
+make_scen(2,Cw1); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
 
 % Create a table with nicer labels for the legends
-Scenario = [1]; 
-Label = {'Alive'}; %;'Dead'
+Scenario = [1;2;3;4;5;6]; 
+Label = {'TKmain';'5 ug/L';'50 ug/L';'500 ug/L';'1500 ug/L';'5000 ug/L'};
 glo.LabelTable = table(Scenario,Label); % create a Matlab table for the labels
 
 %% Initial values for the state variables
