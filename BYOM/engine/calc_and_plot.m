@@ -686,16 +686,17 @@ for k = 1:n_D % run through number of data sets per state
         end
         str_annot{3+i} = '=====================================';
         str_annot{4+i} = sprintf('Min log-lik.: %1.6g (AIC=%1.6g)',FVAL,AIC);
-        str_annot{5+i} = sprintf('Filename: %s',glo.basenm); % name of the mydata file
+        str_annot{5+i} = sprintf('R_mod: %1.6g',glo.R_mod); % Print receptor model version used
+        str_annot{6+i} = sprintf('Filename: %s',glo.basenm); % name of the mydata file
         ti = clock; % what is the current time?
-        str_annot{6+i} = sprintf('Analysis date: %s (%02.0f:%02.0f)',date,ti(4),ti(5));
+        str_annot{7+i} = sprintf('Analysis date: %s (%02.0f:%02.0f)',date,ti(4),ti(5));
         
         if isfield(glo,'str_extra')
-            str_annot{7+i} = '=====================================';
+            str_annot{8+i} = '=====================================';
             for i_ex = 1:length(str_extra)
-                str_annot(7+i+i_ex) = str_extra(i_ex);
+                str_annot(8+i+i_ex) = str_extra(i_ex);
             end
-            str_annot{7+i+i_ex+1} = '=====================================';
+            str_annot{8+i+i_ex+1} = '=====================================';
         end
         
         % make a textbox and place it in the additional subplot

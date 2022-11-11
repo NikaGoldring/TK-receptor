@@ -147,13 +147,14 @@ prelim_checks % script to perform some preliminary checks and set things up
 % Options for the optimsation routine can be set using opt_optim. Options
 % for the ODE solver are part of the global glo. 
 
-glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 
-opt_optim.fit = 1; % fit the parameters (1), or don't (0)
-opt_optim.it  = 0; % show iterations of the simplex optimisation (1, default) or not (0)
-opt_plot.bw   = 0; % plot in black and white
-opt_plot.cn   = 0; % if set to 1, connect model line to points (only for bw=1)
-glo.useode    = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
+opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
+opt_optim.it   = 0; % show iterations of the simplex optimisation (1, default) or not (0)
+opt_plot.bw    = 0; % plot in black and white
+opt_plot.cn    = 0; % if set to 1, connect model line to points (only for bw=1)
+opt_plot.annot = 1; % annotations in sub-plot: text box with parameter estimates or overall legend
+glo.useode     = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
 
 % optimise and plot (fitted parameters in par_out)
 par_out = calc_optim(par,opt_optim); % start the optimisation
