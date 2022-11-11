@@ -113,6 +113,7 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
+glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
 
@@ -124,6 +125,12 @@ par.kon   = [1       1 0.01 100 1];  % association of ligand-receptor complex
 par.B_MAX = [0.29    1 0    100 1];  % maximal binding capacity, µmol/kg
 par.Kd    = [0.6     1 0    100 1];  % equilibrium dissociation constant, nmol
 
+switch glo.R_mod % make sure that right parameters are fitted
+    case 1 % (1) Michaelis-Menten Kinetics, or 
+        par.kon(2) = 0; % Do not fit kon, the association of ligand-receptor complex
+    case 2 % (2) second order kinetics
+        par.Kd(2)  = 0; % Do not fit Kd, equilibrium dissociation constant
+end
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
 % used, based on the data set
@@ -146,8 +153,6 @@ prelim_checks % script to perform some preliminary checks and set things up
 % Options for the plotting can be set using opt_plot (see prelim_checks.m).
 % Options for the optimsation routine can be set using opt_optim. Options
 % for the ODE solver are part of the global glo. 
-
-glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 
 opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
 opt_optim.it   = 0; % show iterations of the simplex optimisation (1, default) or not (0)
