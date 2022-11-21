@@ -72,7 +72,13 @@ DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
            13.1	 0.2049	 0.2347	0.1889	0.2339	0.2339	0.2465
            15.1	 0.1691	0.1914	0.2380	0.2100	0.1716	0.2111];
 
-% Constant exposures
+% % Constant exposures
+% DATA{3} = [ 0.50	3	3	3	4	4	4	5	5	5	6	6	6
+% 0.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+% 2.00	NaN	NaN	NaN	0.7314	0.7308	0.6980	4.4546	3.8172	3.9223	35.5530	43.7306	36.7030
+% 4.00	0.259215324	0.264833362	0.235430288	0.2830	0.2491	0.2046	0.2527	0.2420	0.2577	0.4499	0.4797	0.2505
+% 6.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+% 8.00	0.212699237	0.148274607	0.205478371	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN];
 
 
 % If needed, weights for individual measurements can be defined
@@ -85,6 +91,7 @@ DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
 % series (which has an analytical solution, and is thus much faster than
 % the ODE version). Double time entries are used, which is more efficient,
 % and probably more accurate.
+% Pulse exposure
 Cw1 = [ 0	1	    2       
         0.0	0.0227	0.2193  % µmol/L
         1.0	0.0227	0.2193
@@ -100,11 +107,26 @@ Cw1 = [ 0	1	    2
        13.1	0	    0
        15.1	0	    0 ];
 
+% % Constant exposures
+% Cw1 = [0.00 	3	    4	    5	    6
+%         0.00	0.0186	0.2102	1.8002	20.2265
+%         2.00	0.0186	0.2102	1.8002	20.2265
+%         4.00	0.0186	0.0000	0.0000	0.0000
+%         4.01	0.0000	0.0000	0.0000	0.0000
+%         6.00	0.0000	0.0000	0.0000	0.0000
+%         8.00	0.0000	0.0000	0.0000	0.0000];
+
 make_scen(2,Cw1); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
 
 % Create a table with nicer labels for the legends
+% Pulse exposure
 Scenario = [1;2]; 
 Label = {'Pulse 1'; 'Pulse 2'}; 
+
+% % Constant exposures
+% Scenario = [3;4;5;6]; 
+% Label = {'5 ug/L'; '50 ug/L'; ; '500 ug/L'; '5000 ug/L'}; 
+
 glo.LabelTable = table(Scenario,Label); % create a Matlab table for the labels
 
 %% Initial values for the state variables
@@ -168,20 +190,4 @@ glo.useode     = 1; % use the analytical solution in simplefun.m (0) or the ODE 
 par_out = calc_optim(par,opt_optim); % start the optimisation
 calc_and_plot(par_out,opt_plot); % calculate model lines and plot them
 
-% % % Profiling the likelihood
-% % By profiling you make robust confidence intervals for one or more of your
-% % parameters. Use the names of the parameters as they occurs in your
-% % parameter structure _par_ above. This can be a single string (e.g.,
-% % 'kd'), a cell array of strings (e.g., {'kd','ke'}), or 'all' to profile
-% % all fitted parameters. 
-% % 
-% % Options for profiling can be set using opt_prof (see prelim_checks.m).
-% 
-% opt_prof.detail   = 2; % detailed (1) or a coarse (2) calculation
-% opt_prof.subopt   = 10; % number of sub-optimisations to perform to increase robustness
-% 
-% % UNCOMMENT LINE(S) TO CALCULATE
-% par_better = calc_proflik(par_out,{'all'},opt_prof,opt_optim);  % calculate a profile
-% if ~isempty(par_better)                 % if the profiling found a better optimum ...
-%     calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
-% end
+
