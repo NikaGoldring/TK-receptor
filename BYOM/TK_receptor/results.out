@@ -1569,3 +1569,14 @@ B_MAX      0.2380 (fit: 1, initial: 0.29)
 Kd            0.6 (fit: 0, initial: 0.6) 
 =================================================================================
 Time required: 17.6 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:       0.01 -        100 fit: 1 (norm)
+ku    bounds:       0.01 -      1e+06 fit: 1 (norm)
+kon   bounds:       0.01 -        100 fit: 1 (norm)
+B_MAX bounds:          0 -        100 fit: 1 (norm)
+Kd    fixed :        0.6              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
