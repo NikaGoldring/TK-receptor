@@ -55,25 +55,27 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % * 0.5 for square-root transform the data, then normal likelihood
 % * 1  for no transformation of the data, then normal likelihood
 
-% Internal concentrations of THI in Gammarus pulex in [unit] 
-% AMD NOTE: times are actually slightly different in scen. 2, should be
-% chaned (if I don't forget)
-DATA{3} = [0.50	1	    1	    2	    2	    2	    3	    3	    3	    4	    4	    4	    5	    5	    5	    6	    6	    6
-           0.00	0.0000	0.0000	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           0.12	0.2573	0.1895	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           0.25	0.3612	0.4987	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           0.42	0.5398	0.5323	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           1.00	0.7147	0.7789	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           1.42	0.8121	0.7184	NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           2.00	0.7640	0.9192	0.2674	0.2467	0.2269	0.7314	0.7308	0.6980	4.4546	3.8172	3.9223	10.8444	9.7258	10.4270	35.5530	43.7306	36.7030
-           2.13	0.6125	0.5869	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           2.25	0.5525	0.5186	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN
-           2.42	0.4769	0.4182	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           3.00	0.3570	0.3204	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           4.00	0.2622	0.3317	0.2215	0.2506	0.2312	0.2830	0.2491	0.2046	0.2527	0.2420	0.2577	0.2627	0.2896	0.3041	0.4499	0.4797	0.2505
-           6.00	0.2856	0.2446	NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-           8.00	0.2471	0.1902	NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN
-          10.00	0.2462	0.2213	NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN	    NaN	    NaN	    NaN	    NaN	    NaN 	NaN	    NaN    ];
+% Internal concentrations of THI in Gammarus pulex in [µmol/kg] 
+DATA{3} = [0.50	1	1	1	2	2	2	3	3	3	4	4	5	5	5
+0.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.0000	0.0000	NaN	NaN	NaN
+0.12	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.2573	0.1895	NaN	NaN	NaN
+0.25	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.3612	0.4987	NaN	NaN	NaN
+0.42	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.5398	0.5323	NaN	NaN	NaN
+1.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.7147	0.7789	NaN	NaN	NaN
+1.42	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.8121	0.7184	NaN	NaN	NaN
+2.00	NaN	NaN	NaN	NaN	NaN	NaN	0.2674	0.2467	0.2269	0.7640	0.9192	10.8444	9.7258	10.4270
+2.13	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.6125	0.5869	NaN	NaN	NaN
+2.25	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.5525	0.5186	NaN	NaN	NaN
+2.42	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.4769	0.4182	NaN	NaN	NaN
+3.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.3570	0.3204	NaN	NaN	NaN
+4.00	NaN	NaN	NaN	NaN	NaN	NaN	0.2215	0.2506	0.2312	0.2622	0.3317	0.2627	0.2896	0.3041
+6.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.2856	0.2446	NaN	NaN	NaN
+8.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.2471	0.1902	NaN	NaN	NaN
+10.00	0.0332	0.0310	0.0463	0.2118	0.2007	0.1516	NaN	NaN	NaN	0.2462	0.2213	NaN	NaN	NaN
+15.00	0.0435	0.0704	0.0475	0.2185	0.2094	0.1611	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+20.00	0.0895	0.0626	0.0783	0.2307	0.1944	0.2522	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+25.00	0.0899	0.0864	0.0995	0.2247	0.1847	0.1377	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+];
 
 % If needed, weights for individual measurements can be defined
 % For this, uncommend the following line and specify your weights
@@ -85,28 +87,32 @@ DATA{3} = [0.50	1	    1	    2	    2	    2	    3	    3	    3	    4	    4	    4	  
 % series (which has an analytical solution, and is thus much faster than
 % the ODE version). Double time entries are used, which is more efficient,
 % and probably more accurate.
-Cw1 = [ 0	    1	    2	    3   	4	    5	    6
-        0.00	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265 % µmol/L
-        0.12	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
-        0.25	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
-        0.42	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
-        1.00	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
-        1.42	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
-        2.00	0.2206	0.0219	0.2102	1.8002	5.0173	20.2265
-        2.13	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        2.25	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        2.42	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        3.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        4.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        6.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        8.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
-        10.00	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000 ];
+% [µmol/L]
+Cw1 = [ 0.00	1	    2	3	    4	    5
+    0.00	0.0002	0.0021	0.0219	0.2206	5.0173
+    0.12	0.0002	0.0021	0.0219	0.2206	5.0173
+    0.25	0.0002	0.0021	0.0219	0.2206	5.0173
+    0.42	0.0002	0.0021	0.0219	0.2206	5.0173
+    1.00	0.0002	0.0021	0.0219	0.2206	5.0173
+    1.42	0.0002	0.0021	0.0219	0.2206	5.0173
+    2.00	0.0002	0.0021	0.0219	0.2206	5.0173
+    2.13	0.0002	0.0021	0.0000	0.0000	0.0000
+    2.25	0.0002	0.0021	0.0000	0.0000	0.0000
+    2.42	0.0002	0.0021	0.0000	0.0000	0.0000
+    3.00	0.0002	0.0021	0.0000	0.0000	0.0000
+    4.00	0.0002	0.0021	0.0000	0.0000	0.0000
+    6.00	0.0002	0.0021	0.0000	0.0000	0.0000
+    8.00	0.0002	0.0021	0.0000	0.0000	0.0000
+    10.00	0.0002	0.0021	0.0000	0.0000	0.0000
+    15.00	0.0002	0.0021	0.0000	0.0000	0.0000
+    20.00	0.0000	0.0000	0.0000	0.0000	0.0000
+    25.00	0.0000	0.0000	0.0000	0.0000	0.0000];
 
 make_scen(2,Cw1); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
 
 % Create a table with nicer labels for the legends
-Scenario = [1;2;3;4;5;6]; 
-Label = {'TKmain';'5 ug/L';'50 ug/L';'500 ug/L';'1500 ug/L';'5000 ug/L'};
+Scenario = [1;2;3;4;5;]; 
+Label = {'0.05 ug/L';'0.5 ug/L';'5 ug/L';'50 ug/L (TK-main)';'1500 ug/L'};
 glo.LabelTable = table(Scenario,Label); % create a Matlab table for the labels
 
 %% Initial values for the state variables
