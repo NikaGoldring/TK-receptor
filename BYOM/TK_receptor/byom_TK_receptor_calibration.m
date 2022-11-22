@@ -129,12 +129,12 @@ glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kineti
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval];
-par.ke    = [3.121  1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [7.547   1 0.01 1e6 1];  % uptake rate constant, L/kg/d
-par.kon   = [1       1 0.01 100 1];  % association of ligand-receptor complex
+par.ke    = [2.596  1    1 5   1];  % elimination rate constant, d-1
+par.ku    = [5.289  1    1 7  1];  % uptake rate constant, L/kg/d
+par.kon   = [83.94  1   10 200 1];  % association of ligand-receptor complex
 %par.koff  = [0.3116  1 0.01 100 1];  % dissociation of ligand-receptor complex
-par.B_MAX = [0.29    1 0    100 1];  % maximal binding capacity, µmol/kg
-par.Kd    = [0.6     1 0    100 1];  % equilibrium dissociation constant, nmol
+par.B_MAX = [0.2325 1 0    1   1];  % maximal binding capacity, µmol/kg
+par.Kd    = [0.6    1 0    10   1];  % equilibrium dissociation constant, nmol
 
 switch glo.R_mod % make sure that right parameters are fitted
     case 1 % (1) Michaelis-Menten Kinetics, or 
