@@ -124,17 +124,17 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
-glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 1 % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval];
-par.ke    = [2.596  1    1 5   1];  % elimination rate constant, d-1
-par.ku    = [5.289  1    1 7  1];  % uptake rate constant, L/kg/d
+par.ke    = [2.596  1    1 10  1];  % elimination rate constant, d-1
+par.ku    = [5.289  1    1 20  1];  % uptake rate constant, L/kg/d
 par.kon   = [83.94  1   10 200 1];  % association of ligand-receptor complex
 %par.koff  = [0.3116  1 0.01 100 1];  % dissociation of ligand-receptor complex
 par.B_MAX = [0.2325 1 0    1   1];  % maximal binding capacity, µmol/kg
-par.Kd    = [0.6    1 0    10   1];  % equilibrium dissociation constant, nmol
+par.Kd    = [0.6    1 0.001 1   0];  % equilibrium dissociation constant, nmol
 
 switch glo.R_mod % make sure that right parameters are fitted
     case 1 % (1) Michaelis-Menten Kinetics, or 
@@ -172,6 +172,7 @@ opt_plot.bw    = 0; % plot in black and white
 opt_plot.cn    = 0; % if set to 1, connect model line to points (only for bw=1)
 opt_plot.annot = 1; % annotations in sub-plot: text box with parameter estimates or overall legend
 glo.useode     = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
+glo.stiff      = 0; % use ode45 with very strict tolerances
 
 opt_optim.ps_plots = 0; % when set to 1, makes intermediate plots to monitor progress of parameter-space explorer
 opt_optim.ps_profs = 1; % when set to 1, makes profiles and additional sampling for parameter-space explorer

@@ -1853,3 +1853,549 @@ B_MAX      0.2326 (fit: 1, initial: NaN)
 Kd            0.6 (fit: 0, initial: NaN) 
 =================================================================================
 Time required: 52 mins, 34.8 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -          5 fit: 1 (norm)
+ku    bounds:          1 -          7 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -          1 fit: 1 (norm)
+Kd    bounds:          0 -         10 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 72.9006
+Starting round 2, refining a selection of 700 parameter sets, with 10 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 1.8982
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 1.8832
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 3 within inner. Best fit: 1.8832
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 7 sets within total CI and 5 within inner. Best fit: 1.8832
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 21 sets within total CI and 9 within inner. Best fit: 1.8832
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 54 sets within total CI and 17 within inner. Best fit: 1.8832
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 201 sets within total CI and 64 within inner. Best fit: 1.8832
+Starting round 9, refining a selection of 215 parameter sets, with 20 tries each
+  Status: 376 sets within total CI and 124 within inner. Best fit: 1.8832
+Starting round 10, refining a selection of 399 parameter sets, with 17 tries each
+  Status: 625 sets within total CI and 215 within inner. Best fit: 1.8832
+Starting round 11, refining a selection of 265 parameter sets, with 5 tries each
+  Status: 674 sets within total CI and 227 within inner. Best fit: 1.8832
+Starting round 12, refining a selection of 714 parameter sets, with 5 tries each
+  Status: 828 sets within total CI and 292 within inner. Best fit: 1.8832
+  Next round will focus on inner rim (outer rim has enough points)
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 828 sets within total CI and 293 within inner. Best fit: 1.88
+Starting round 13, creating the profile likelihoods for each parameter
+  Extending profile for ke to lower parameter values
+  Extending profile for ku to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 810 sets within total CI and 274 within inner. Best fit: 1.7978
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 320 parameter sets, with 10 tries each
+  Status: 4010 sets within total CI and 2204 within inner. Best fit: 1.7978
+Starting round 15, (extra 2) refining a selection of 2 parameter sets, with 40 tries each
+  Status: 4090 sets within total CI and 2284 within inner. Best fit: 1.7978
+Starting round 16, refining the profile likelihoods for each parameter again
+  Extending profile for ke to lower parameter values
+  Extending profile for ku to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 4091 sets within total CI and 2285 within inner. Best fit: 1.7977
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 17, (extra 1) refining a selection of 23 parameter sets, with 40 tries each
+  Status: 5011 sets within total CI and 2845 within inner. Best fit: 1.7977
+Starting round 18, refining the profile likelihoods for each parameter again
+  Extending profile for ke to lower parameter values
+  Extending profile for ku to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 5012 sets within total CI and 2846 within inner. Best fit: 1.7977
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 19, (extra 1) refining a selection of 7 parameter sets, with 40 tries each
+  Status: 5292 sets within total CI and 2886 within inner. Best fit: 1.7977
+Exiting parameter space explorer, but there still seem to be parameter sets outside of the profile curves. Check plot.
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 5496 sets in joint CI and 3027 in inner CI.
+   Propagation set: 1055 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      3.472 (     3.065  -     3.621 ) fit: 1 (norm)
+ku    best:      7.000 (     6.273  -     7.000*) fit: 1 (norm)
+B_MAX best:     0.1445 (    0.1220  -    0.1670 ) fit: 1 (norm)
+Kd    best:    0.01883 (   0.01433  -   0.02456 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 22-Nov-2022 (16:29) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 1.80 (AIC=11.60). 
+=================================================================================
+ke          3.472 (fit: 1, initial: NaN) 
+ku          7.000 (fit: 1, initial: NaN) 
+kon         83.94 (fit: 0, initial: NaN) 
+B_MAX      0.1445 (fit: 1, initial: NaN) 
+Kd        0.01883 (fit: 1, initial: NaN) 
+=================================================================================
+Time required: 2 hours, 13 mins, 46.5 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -          5 fit: 1 (norm)
+ku    bounds:          1 -         10 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -          1 fit: 1 (norm)
+Kd    bounds:          0 -         10 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 72.4551
+Starting round 2, refining a selection of 700 parameter sets, with 10 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: -0.83071
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: -1.5757
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 5 sets within total CI and 3 within inner. Best fit: -1.6646
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 11 sets within total CI and 4 within inner. Best fit: -1.6676
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 23 sets within total CI and 8 within inner. Best fit: -1.6676
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 70 sets within total CI and 20 within inner. Best fit: -1.6676
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 236 sets within total CI and 58 within inner. Best fit: -1.6676
+Starting round 9, refining a selection of 256 parameter sets, with 20 tries each
+  Status: 432 sets within total CI and 116 within inner. Best fit: -1.6676
+Starting round 10, refining a selection of 212 parameter sets, with 20 tries each
+  Status: 593 sets within total CI and 169 within inner. Best fit: -1.6676
+Starting round 11, refining a selection of 633 parameter sets, with 5 tries each
+  Status: 707 sets within total CI and 210 within inner. Best fit: -1.6676
+  Next round will focus on inner rim (outer rim has enough points)
+Starting round 12, refining a selection of 402 parameter sets, with 7 tries each
+  Status: 826 sets within total CI and 252 within inner. Best fit: -1.6676
+  Next round will focus on inner rim (outer rim has enough points)
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 821 sets within total CI and 249 within inner. Best fit: -1.6855
+Starting round 13, creating the profile likelihoods for each parameter
+  Better optimum found when profiling ke: -1.7579 (best was -1.6855)
+  Extending profile for ku to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 802 sets within total CI and 242 within inner. Best fit: -1.7594
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 108 parameter sets, with 32 tries each
+  Status: 4258 sets within total CI and 2674 within inner. Best fit: -1.7594
+Starting round 15, refining the profile likelihoods for each parameter again
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 4259 sets within total CI and 2675 within inner. Best fit: -1.7594
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 16, (extra 1) refining a selection of 1 parameter sets, with 40 tries each
+  Status: 4299 sets within total CI and 2675 within inner. Best fit: -1.7594
+Starting round 17, refining the profile likelihoods for each parameter again
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 4300 sets within total CI and 2676 within inner. Best fit: -1.7594
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 4498 sets in joint CI and 2816 in inner CI.
+   Propagation set: 694 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      4.887 (     3.862  -     5.000*) fit: 1 (norm)
+ku    best:      9.992 (     7.882  -     10.00*) fit: 1 (norm)
+B_MAX best:     0.1477 (    0.1278  -    0.1689 ) fit: 1 (norm)
+Kd    best:    0.01935 (   0.01521  -   0.02480 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 24-Nov-2022 (15:00) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -1.76 (AIC=4.48). 
+=================================================================================
+ke          4.887 (fit: 1, initial: NaN) 
+ku          9.992 (fit: 1, initial: NaN) 
+kon         83.94 (fit: 0, initial: NaN) 
+B_MAX      0.1477 (fit: 1, initial: NaN) 
+Kd        0.01935 (fit: 1, initial: NaN) 
+=================================================================================
+Time required: 2 hours, 33 mins, 43.9 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -        100 fit: 1 (norm)
+ku    bounds:          1 -        100 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -         10 fit: 1 (norm)
+Kd    bounds:          0 -         10 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 85.029
+Starting round 2, refining a selection of 391 parameter sets, with 17 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 10.7398
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 10.6705
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 3 within inner. Best fit: 10.6705
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 6 sets within total CI and 4 within inner. Best fit: 10.6705
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 16 sets within total CI and 7 within inner. Best fit: 10.6705
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: -1.9276
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: -1.9768
+Starting round 9, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 3 within inner. Best fit: -1.9793
+Starting round 10, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 6 sets within total CI and 4 within inner. Best fit: -1.9863
+Starting round 11, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 10 sets within total CI and 6 within inner. Best fit: -1.9863
+Starting round 12, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 12 sets within total CI and 7 within inner. Best fit: -1.9863
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 13 sets within total CI and 8 within inner. Best fit: -1.9932
+Starting round 13, creating the profile likelihoods for each parameter
+  Extending profile for ke to lower parameter values
+  Extending profile for ke to higher parameter values
+  Extending profile for ku to lower parameter values
+  Extending profile for ku to higher parameter values
+  Extending profile for B_MAX to lower parameter values
+  Extending profile for B_MAX to higher parameter values
+  Extending profile for Kd to lower parameter values
+  Extending profile for Kd to higher parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 14 sets within total CI and 9 within inner. Best fit: -2.0283
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 522 parameter sets, with 6 tries each
+  Status: 3146 sets within total CI and 2289 within inner. Best fit: -2.0283
+Starting round 15, refining the profile likelihoods for each parameter again
+  Extending profile for ke to lower parameter values
+  Extending profile for ku to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Extending profile for Kd to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 3147 sets within total CI and 2290 within inner. Best fit: -2.0283
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 16, (extra 1) refining a selection of 7 parameter sets, with 40 tries each
+  Status: 3427 sets within total CI and 2290 within inner. Best fit: -2.0283
+Starting round 17, refining the profile likelihoods for each parameter again
+  Extending profile for ku to lower parameter values
+  Extending profile for Kd to lower parameter values
+  Status: 3427 sets within total CI and 2290 within inner. Best fit: -2.0283
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 18, (extra 1) refining a selection of 3 parameter sets, with 40 tries each
+  Status: 3547 sets within total CI and 2290 within inner. Best fit: -2.0283
+Exiting parameter space explorer, but there still seem to be parameter sets outside of the profile curves. Check plot.
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 3750 sets in joint CI and 2442 in inner CI.
+   Propagation set: 464 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      5.363 (     3.957  -     8.275 ) fit: 1 (norm)
+ku    best:      10.95 (     8.044  -     16.80 ) fit: 1 (norm)
+B_MAX best:     0.1489 (    0.1290  -    0.1706 ) fit: 1 (norm)
+Kd    best:    0.01961 (   0.01536  -   0.02509 ) fit: 1 (norm)
+==========================================================================
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 25-Nov-2022 (14:53) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -2.03 (AIC=3.94). 
+=================================================================================
+ke          5.363 (fit: 1, initial: NaN) 
+ku          10.95 (fit: 1, initial: NaN) 
+kon         83.94 (fit: 0, initial: NaN) 
+B_MAX      0.1489 (fit: 1, initial: NaN) 
+Kd        0.01961 (fit: 1, initial: NaN) 
+=================================================================================
+Time required: 5 hours, 51 mins, 34.2 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -        100 fit: 1 (norm)
+ku    bounds:          1 -        100 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -         10 fit: 1 (norm)
+Kd    bounds:          0 -         10 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+{SWITCH expression must be a scalar or a character vector.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('call_deri', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\call_deri.m', 99)" style="font-weight:bold">call_deri</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\call_deri.m',99,0)">line 99</a>)
+        switch stiff
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('transfer', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\transfer.m', 91)" style="font-weight:bold">transfer</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\transfer.m',91,0)">line 91</a>)
+    [Xout,~,Xout2,zvd] = call_deri(ttot,par,[ctot(i);X0],glo); % use call_deri.m to provide the output per concentration
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_parspace', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_parspace.m', 263)" style="font-weight:bold">calc_parspace</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_parspace.m',263,0)">line 263</a>)
+    coll_all(i_t,end) = transfer(pfit,pmat); % calculate the min-log-likelihood for this parameter combination,
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim_ps', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_optim_ps.m', 178)" style="font-weight:bold">calc_optim_ps</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_optim_ps.m',178,0)">line 178</a>)
+[minmax,mll,stats,pmat_print,pmat] = calc_parspace(pmat,opt_optim,SETTINGS_OPTIM);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\calc_optim.m', 119)" style="font-weight:bold">calc_optim</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\calc_optim.m',119,0)">line 119</a>)
+        [pmat,pmat_print,FVAL,names_out] = calc_optim_ps(pmat,opt_optim);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('byom_TK_receptor_calibration', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\byom_TK_receptor_calibration.m', 183)" style="font-weight:bold">byom_TK_receptor_calibration</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\byom_TK_receptor_calibration.m',183,0)">line 183</a>)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+} 
+opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\call_deri.m',99,0)
+byom_TK_receptor_calibration
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -        100 fit: 1 (norm)
+ku    bounds:          1 -        100 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -         10 fit: 1 (norm)
+Kd    bounds:          0 -         10 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('odeset', 'C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\odeset.m', 182)" style="font-weight:bold">odeset</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\odeset.m',182,0)">line 182</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('call_deri', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\call_deri.m', 93)" style="font-weight:bold">call_deri</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\call_deri.m',93,0)">line 93</a>)
+        options = odeset(options,'RelTol',reltol,'AbsTol',abstol); % only specify tightened tolerances
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('transfer', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\transfer.m', 91)" style="font-weight:bold">transfer</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\transfer.m',91,0)">line 91</a>)
+    [Xout,~,Xout2,zvd] = call_deri(ttot,par,[ctot(i);X0],glo); % use call_deri.m to provide the output per concentration
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_parspace', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_parspace.m', 263)" style="font-weight:bold">calc_parspace</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_parspace.m',263,0)">line 263</a>)
+    coll_all(i_t,end) = transfer(pfit,pmat); % calculate the min-log-likelihood for this parameter combination,
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim_ps', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_optim_ps.m', 178)" style="font-weight:bold">calc_optim_ps</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_optim_ps.m',178,0)">line 178</a>)
+[minmax,mll,stats,pmat_print,pmat] = calc_parspace(pmat,opt_optim,SETTINGS_OPTIM);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\calc_optim.m', 119)" style="font-weight:bold">calc_optim</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\calc_optim.m',119,0)">line 119</a>)
+        [pmat,pmat_print,FVAL,names_out] = calc_optim_ps(pmat,opt_optim);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('byom_TK_receptor_calibration', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\byom_TK_receptor_calibration.m', 183)" style="font-weight:bold">byom_TK_receptor_calibration</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\byom_TK_receptor_calibration.m',183,0)">line 183</a>)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+} 
+byom_TK_receptor_calibration
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -         50 fit: 1 (norm)
+ku    bounds:          1 -         50 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -         10 fit: 1 (norm)
+Kd    bounds:          0 -         10 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 84.1885
+Starting round 2, refining a selection of 386 parameter sets, with 18 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 7.2573
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 7.0959
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 0.10552
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 1 within inner. Best fit: -1.9692
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 2 within inner. Best fit: -1.983
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 5 sets within total CI and 3 within inner. Best fit: -1.9845
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 9 sets within total CI and 4 within inner. Best fit: -1.9866
+Starting round 9, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 14 sets within total CI and 5 within inner. Best fit: -1.9866
+Starting round 10, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 22 sets within total CI and 7 within inner. Best fit: -1.9866
+Starting round 11, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 34 sets within total CI and 12 within inner. Best fit: -1.9866
+Starting round 12, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 52 sets within total CI and 15 within inner. Best fit: -1.9866
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 53 sets within total CI and 16 within inner. Best fit: -1.989
+Starting round 13, creating the profile likelihoods for each parameter
+  Extending profile for ke to lower parameter values
+  Extending profile for ku to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Extending profile for B_MAX to higher parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 54 sets within total CI and 17 within inner. Best fit: -2.0282
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 287 parameter sets, with 12 tries each
+  Status: 3498 sets within total CI and 2333 within inner. Best fit: -2.0282
+Starting round 15, refining the profile likelihoods for each parameter again
+  Extending profile for ke to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 3499 sets within total CI and 2334 within inner. Best fit: -2.0283
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 16, (extra 1) refining a selection of 3 parameter sets, with 40 tries each
+  Status: 3619 sets within total CI and 2334 within inner. Best fit: -2.0283
+Starting round 17, refining the profile likelihoods for each parameter again
+  Extending profile for ku to lower parameter values
+  Extending profile for B_MAX to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 3620 sets within total CI and 2335 within inner. Best fit: -2.0283
+  New profiling has detected gaps, which requires additional extra sampling rounds!
+Starting round 18, (extra 1) refining a selection of 4 parameter sets, with 40 tries each
+  Status: 3780 sets within total CI and 2335 within inner. Best fit: -2.0283
+Exiting parameter space explorer, but there still seem to be parameter sets outside of the profile curves. Check plot.
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 3982 sets in joint CI and 2472 in inner CI.
+   Propagation set: 458 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      5.363 (     3.952  -     8.235 ) fit: 1 (norm)
+ku    best:      10.95 (     8.042  -     16.78 ) fit: 1 (norm)
+B_MAX best:     0.1489 (    0.1289  -    0.1706 ) fit: 1 (norm)
+Kd    best:    0.01961 (   0.01535  -   0.02510 ) fit: 1 (norm)
+==========================================================================
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 25-Nov-2022 (19:54) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -2.03 (AIC=3.94). 
+=================================================================================
+ke          5.363 (fit: 1, initial: NaN) 
+ku          10.95 (fit: 1, initial: NaN) 
+kon         83.94 (fit: 0, initial: NaN) 
+B_MAX      0.1489 (fit: 1, initial: NaN) 
+Kd        0.01961 (fit: 1, initial: NaN) 
+=================================================================================
+Time required: 3 hours, 17 mins, 51.2 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -         10 fit: 1 (norm)
+ku    bounds:          1 -         20 fit: 1 (norm)
+kon   fixed :      83.94              fit: 0
+B_MAX bounds:          0 -          1 fit: 1 (norm)
+Kd    bounds:      0.001 -          1 fit: 1 (log)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 0.75447
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 22 sets within total CI and 7 within inner. Best fit: -1.7239
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 174 sets within total CI and 24 within inner. Best fit: -1.7633
+Starting round 4, refining a selection of 362 parameter sets, with 19 tries each
+  Status: 774 sets within total CI and 136 within inner. Best fit: -1.7718
+  Next round will focus on inner rim (outer rim has enough points)
+Starting round 5, refining a selection of 200 parameter sets, with 15 tries each
+  Status: 1595 sets within total CI and 310 within inner. Best fit: -1.9814
+  Finished sampling, running a simplex optimisation ...
+  Status: 1587 sets within total CI and 309 within inner. Best fit: -1.9895
+Starting round 6, creating the profile likelihoods for each parameter
+  Extending profile for ke to lower parameter values
+  Extending profile for ku to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 1566 sets within total CI and 300 within inner. Best fit: -2.0281
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 7, (extra 1) refining a selection of 83 parameter sets, with 40 tries each
+  Status: 4886 sets within total CI and 2340 within inner. Best fit: -2.0281
+Starting round 8, (extra 2) refining a selection of 2 parameter sets, with 40 tries each
+  Status: 4966 sets within total CI and 2340 within inner. Best fit: -2.0281
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 5177 sets in joint CI and 2477 in inner CI.
+   Propagation set: 846 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      5.363 (     3.958  -     8.264 ) fit: 1 (norm)
+ku    best:      10.95 (     8.044  -     16.75 ) fit: 1 (norm)
+B_MAX best:     0.1487 (    0.1290  -    0.1707 ) fit: 1 (norm)
+Kd    best:    0.01959 (   0.01535  -   0.02506 ) fit: 1 (log)
+==========================================================================
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 29-Nov-2022 (15:27) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -2.03 (AIC=3.94). 
+=================================================================================
+ke          5.363 (fit: 1, initial: NaN) 
+ku          10.95 (fit: 1, initial: NaN) 
+kon         83.94 (fit: 0, initial: NaN) 
+B_MAX      0.1487 (fit: 1, initial: NaN) 
+Kd        0.01959 (fit: 1, initial: NaN) 
+=================================================================================
+Parameter Kd is fitted on log-scale.
+=================================================================================
+Time required: 1 hour, 8 mins, 13.5 secs
