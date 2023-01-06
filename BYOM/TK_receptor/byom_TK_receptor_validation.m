@@ -138,27 +138,33 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
-glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
 
-% syntax: par.name = [startvalue fit(0/1) minval maxval];
-par.ke    = [3.121  1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [7.547   1 0.01 1e6 1];  % uptake rate constant, L/kg/d
-par.kon   = [1       1 0.01 100 1];  % association of ligand-receptor complex
-%par.koff  = [0.3116  1 0.01 100 1];  % dissociation of ligand-receptor complex
-par.B_MAX = [0.29    1 0    100 1];  % maximal binding capacity, µmol/kg
-par.Kd    = [0.6     1 0    100 1];  % equilibrium dissociation constant, nmol
-
 switch glo.R_mod % make sure that right parameters are fitted
-    case 1 % (1) Michaelis-Menten Kinetics, or 
-        par.kon(2) = 0; % Do not fit kon, the association of ligand-receptor complex
+    case 1 % (1) Michaelis-Menten Kinetics
+        % syntax: par.name = [startvalue fit(0/1) minval maxval];
+        par.ke    = [5.363  1 0.01 100 1];  % elimination rate constant, d-1
+        par.ku    = [10.95   1 0.01 1e6 1];  % uptake rate constant, L/kg/d
+        par.kon   = [0      0 0 100 1];  % needs to be defined but is not used
+        %par.koff  = [0.3116  1 0.01 100 1];  % dissociation of ligand-receptor complex
+        par.B_MAX = [0.1487    1 0    100 1];  % maximal binding capacity, µmol/kg
+        par.Kd    = [0.01959     1 0    100 1];  % equilibrium dissociation constant, nmol
     case 2 % (2) second order kinetics
-        par.Kd(2)  = 0; % Do not fit Kd, equilibrium dissociation constant
+        % syntax: par.name = [startvalue fit(0/1) minval maxval];
+        par.ke    = [2.595  1 0.01 100 1];  % elimination rate constant, d-1
+        par.ku    = [5.291   1 0.01 1e6 1];  % uptake rate constant, L/kg/d
+        par.kon   = [83.94       1 0.01 100 1];  % association of ligand-receptor complex
+        %par.koff  = [0.3116  1 0.01 100 1];  % dissociation of ligand-receptor complex
+        par.B_MAX = [0.2326    1 0    100 1];  % maximal binding capacity, µmol/kg
+        par.Kd    = [0     0 0    100 1] % needs to be defined but is not used
 end
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
 % used, based on the data set
+
+glo.t = linspace(0,20,500); % time vector for the model curves in days
 
 % specify the y-axis labels for each state variable
 glo.ylab{1} = ['internal concentration (',char(181),'mol/kg)'];
@@ -174,20 +180,17 @@ prelim_checks % script to perform some preliminary checks and set things up
 % modify options after this call, if needed.
 
 %% Calculations and plotting
-% Here, the function is called that will do the calculation and the plotting.
-% Options for the plotting can be set using opt_plot (see prelim_checks.m).
-% Options for the optimsation routine can be set using opt_optim. Options
-% for the ODE solver are part of the global glo. 
+% Also try plottype 5 for this example! See the SIMbyom package for more
+% detailed information on the simulator options.
+ 
+opt_sim.plottype = 3; % select a plotting option
+% 1) 3d plot, 
+% 2) 2d plot, 
+% 3) states in subplots, 
+% 4) scenarios in subplots,
+% 5) dx/dt versus x
+% 6) 2d plot for each scenario separate
 
-opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
-opt_optim.it   = 0; % show iterations of the simplex optimisation (1, default) or not (0)
-opt_plot.bw    = 0; % plot in black and white
-opt_plot.cn    = 0; % if set to 1, connect model line to points (only for bw=1)
-opt_plot.annot = 1; % annotations in sub-plot: text box with parameter estimates or overall legend
-glo.useode     = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
+opt_sim.plot_int = 1;      % interval for plotting (how many time points to do in one go) 
 
-% optimise and plot (fitted parameters in par_out)
-par_out = calc_optim(par,opt_optim); % start the optimisation
-calc_and_plot(par_out,opt_plot); % calculate model lines and plot them
-
-
+sim_and_plot(par,opt_sim); % call the script which calculates and plots (simulation only)
