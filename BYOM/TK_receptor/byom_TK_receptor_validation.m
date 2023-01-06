@@ -61,7 +61,7 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % Validation is done for pulsed and constant exposures seperatly,
 % determinded by the switch case here:
 
-glo.V_mod = 1 ; % Validate for (1) pulse or (2) constant exposures
+glo.V_mod = 2 ; % Validate for (1) pulse or (2) constant exposures
 
 switch glo.V_mod % make sure that right parameters are fitted
     case 1 % (1) Pulse exposure
@@ -145,7 +145,7 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
-glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
 
