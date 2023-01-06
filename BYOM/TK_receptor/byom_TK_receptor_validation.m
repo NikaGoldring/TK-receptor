@@ -55,9 +55,19 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % * 0.5 for square-root transform the data, then normal likelihood
 % * 1  for no transformation of the data, then normal likelihood
 
-% Internal concentrations of THI in Gammarus pulex in [µg/kg] 
-% Pulse exposure
-DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
+%% Initial values for the model parameters
+% Model parameters are part of a 'structure' for easy reference. 
+
+% Validation is done for pulsed and constant exposures seperatly,
+% determinded by the switch case here:
+
+glo.V_mod = 1 ; % Validate for (1) pulse or (2) constant exposures
+
+switch glo.V_mod % make sure that right parameters are fitted
+    case 1 % (1) Pulse exposure
+        % Internal concentrations of THI in Gammarus pulex in [µg/kg] 
+        % Pulse exposure
+        DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
             0.0	 0.0001	 0.0000	0.0000	0.0000	0.0000	0.0000
             1.0	 0.2148	 0.1780	0.1789	0.7390	0.7474	0.7777
             2.0	 0.3031	 0.2461	0.2827	0.7887	0.6594	0.8110
@@ -72,60 +82,57 @@ DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
            13.1	 0.2049	 0.2347	0.1889	0.2339	0.2339	0.2465
            15.1	 0.1691	0.1914	0.2380	0.2100	0.1716	0.2111];
 
-% % Constant exposures
-% DATA{3} = [ 0.50	3	3	3	4	4	4	5	5	5	6	6	6
-% 0.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
-% 2.00	NaN	NaN	NaN	0.7314	0.7308	0.6980	4.4546	3.8172	3.9223	35.5530	43.7306	36.7030
-% 4.00	0.259215324	0.264833362	0.235430288	0.2830	0.2491	0.2046	0.2527	0.2420	0.2577	0.4499	0.4797	0.2505
-% 6.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
-% 8.00	0.212699237	0.148274607	0.205478371	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN];
+        % In this data set, exposure was time-varying and reported as a series of
+        % concentrations over time. Here, the scenario is used as a linear forcing
+        % series (which has an analytical solution, and is thus much faster than
+        % the ODE version). Double time entries are used, which is more efficient,
+        % and probably more accurate.
+        % Pulse exposure    
+        Cw1 = [ 0	1	    2       
+                0.0	0.0227	0.2193  % µmol/L
+                1.0	0.0227	0.2193
+                2.0	0	    0
+                3.0	0	    0
+                5.0	0.0227	0.2193
+                6.0	0.0227	0.2193
+                7.0	0	    0
+                8.0	0	    0
+               10.1	0.0227	0.2193
+               11.1	0.0227	0.2193
+               12.1	0	    0
+               13.1	0	    0
+               15.1	0	    0 ];
 
+        % Create a table with nicer labels for the legends
+        % Pulse exposure
+        Scenario = [1;2]; 
+        Label = {'Pulse 1'; 'Pulse 2'}; 
 
-% If needed, weights for individual measurements can be defined
-% For this, uncommend the following line and specify your weights
+    case 2 % (2) Constant exposure
+        % Constant exposures
+        DATA{3} = [ 0.50	3	3	3	4	4	4	5	5	5	6	6	6
+                    0.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+                    2.00	NaN	NaN	NaN	0.7314	0.7308	0.6980	4.4546	3.8172	3.9223	35.5530	43.7306	36.7030
+                    4.00	0.259215324	0.264833362	0.235430288	0.2830	0.2491	0.2046	0.2527	0.2420	0.2577	0.4499	0.4797	0.2505
+                    6.00	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+                    8.00	0.212699237	0.148274607	0.205478371	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN];
 
-% W{1} = 21 * ones(size(DATA{1})-1); % each point is a pooled sample of 21 animals
-
-% In this data set, exposure was time-varying and reported as a series of
-% concentrations over time. Here, the scenario is used as a linear forcing
-% series (which has an analytical solution, and is thus much faster than
-% the ODE version). Double time entries are used, which is more efficient,
-% and probably more accurate.
-% Pulse exposure
-Cw1 = [ 0	1	    2       
-        0.0	0.0227	0.2193  % µmol/L
-        1.0	0.0227	0.2193
-        2.0	0	    0
-        3.0	0	    0
-        5.0	0.0227	0.2193
-        6.0	0.0227	0.2193
-        7.0	0	    0
-        8.0	0	    0
-       10.1	0.0227	0.2193
-       11.1	0.0227	0.2193
-       12.1	0	    0
-       13.1	0	    0
-       15.1	0	    0 ];
-
-% % Constant exposures
-% Cw1 = [0.00 	3	    4	    5	    6
-%         0.00	0.0186	0.2102	1.8002	20.2265
-%         2.00	0.0186	0.2102	1.8002	20.2265
-%         4.00	0.0186	0.0000	0.0000	0.0000
-%         4.01	0.0000	0.0000	0.0000	0.0000
-%         6.00	0.0000	0.0000	0.0000	0.0000
-%         8.00	0.0000	0.0000	0.0000	0.0000];
+        % Constant exposures
+        Cw1 = [0.00 	3	    4	    5	    6
+               0.00	0.0186	0.2102	1.8002	20.2265
+               2.00	0.0186	0.2102	1.8002	20.2265
+               4.00	0.0186	0.0000	0.0000	0.0000
+               4.01	0.0000	0.0000	0.0000	0.0000
+               6.00	0.0000	0.0000	0.0000	0.0000
+               8.00	0.0000	0.0000	0.0000	0.0000];
+        % Create a table with nicer labels for the legends
+        % Constant exposures
+        Scenario = [3;4;5;6]; 
+        Label = {'5 ug/L'; '50 ug/L'; '500 ug/L'; '5000 ug/L'}; 
+end
+        
 
 make_scen(2,Cw1); % prepare as linear-forcing function interpolation (can use glo.use_ode = 0)  
-
-% Create a table with nicer labels for the legends
-% Pulse exposure
-Scenario = [1;2]; 
-Label = {'Pulse 1'; 'Pulse 2'}; 
-
-% % Constant exposures
-% Scenario = [3;4;5;6]; 
-% Label = {'5 ug/L'; '50 ug/L'; ; '500 ug/L'; '5000 ug/L'}; 
 
 glo.LabelTable = table(Scenario,Label); % create a Matlab table for the labels
 
@@ -164,7 +171,12 @@ end
 % Specify what to plot. If time vector glo.t is not specified, a default is
 % used, based on the data set
 
-glo.t = linspace(0,20,500); % time vector for the model curves in days
+switch glo.V_mod % time vector according to validation modus
+    case 1 % (1) pulse
+        glo.t = linspace(0,20,500); % time vector for the model curves in days
+    case 2 % (2) constant
+        glo.t = linspace(0,10,500); % time vector for the model curves in days
+end
 
 % specify the y-axis labels for each state variable
 glo.ylab{1} = ['internal concentration (',char(181),'mol/kg)'];
@@ -194,3 +206,4 @@ opt_sim.plottype = 3; % select a plotting option
 opt_sim.plot_int = 1;      % interval for plotting (how many time points to do in one go) 
 
 sim_and_plot(par,opt_sim); % call the script which calculates and plots (simulation only)
+calc_and_plot(par,opt_plot); % call the plotting routine again to plot raw data
