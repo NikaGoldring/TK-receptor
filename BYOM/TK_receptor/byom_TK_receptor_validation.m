@@ -121,6 +121,7 @@ switch glo.V_mod % make sure that right parameters are fitted
         Cw1 = [0.00 	3	    4	    5	    6
                0.00	0.0186	0.2102	1.8002	20.2265
                2.00	0.0186	0.2102	1.8002	20.2265
+               2.01 0.0186  0.0     0.0     0.0 
                4.00	0.0186	0.0000	0.0000	0.0000
                4.01	0.0000	0.0000	0.0000	0.0000
                6.00	0.0000	0.0000	0.0000	0.0000
@@ -145,7 +146,7 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
-glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
 
