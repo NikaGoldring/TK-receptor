@@ -65,7 +65,7 @@ glo.V_mod = 2 ; % Validate for (1) pulse or (2) constant exposures
 
 switch glo.V_mod % make sure that right parameters are fitted
     case 1 % (1) Pulse exposure
-        % Internal concentrations of THI in Gammarus pulex in [µg/kg] 
+        % Internal concentrations of THI in Gammarus pulex in [µmol/kg] 
         % Pulse exposure
         DATA{3} = [ 0.5	 1	     1	    1	    2	    2	    2
             0.0	 0.0001	 0.0000	0.0000	0.0000	0.0000	0.0000

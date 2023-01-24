@@ -35,7 +35,7 @@ function dX = derivatives(t,X,par,c,glo)
 % them a more handy name.
 
 Ci   = X(1); % state 1 (internal concentrations) at previous time point
-N_RL = X(2); % state 2 (receptor-antagonist complex concentration) at previous time point
+N_RL = X(2); % state 2 (receptor-agonist complex concentration) at previous time point
 
 % these concentrations are both expressed on volume basis.
 
@@ -44,6 +44,8 @@ N_RL = X(2); % state 2 (receptor-antagonist complex concentration) at previous t
 % the structure are the same as those defined in the byom script file.
 % The 1 between parentheses is needed as each parameter has 5 associated
 % values.
+
+FMS = glo.FMS;  % normalize for membrane protein content assuming a density of 1 (VMP/VS)
 
 ke    = par.ke(1);    % elimination rate constant, d-1
 ku    = par.ku(1);    % uptake rate constant, L/kg/d
@@ -67,12 +69,12 @@ end
 %% Calculate the derivatives
 % This is the actual model, specified as a system of two ODEs:
 
-dCi = ku * c - ke * Ci ; % first order bioconcentration
+dCi = ku * c - ke * Ci - kon * FMS *Ci; % first order bioconcentration
 
 if glo.R_mod == 1 
-    dN_RL =  B_MAX * ( c / (Kd + c) ) ; % Michaelis-Menten kinetics 
+    dN_RL =  B_MAX * ( Ci / (Kd + Ci) ) ; % Michaelis-Menten kinetics 
 elseif glo.R_mod == 2
-    dN_RL =  kon * c * max(0, B_MAX - N_RL) ; % second order kinetics
+    dN_RL =  kon * Ci * max(0, (B_MAX - N_RL)) ; % second order kinetics
 else 
     print('Define a receptor kinetic (R_mod)')
     return
