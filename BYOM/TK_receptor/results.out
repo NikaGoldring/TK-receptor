@@ -3494,3 +3494,47 @@ Kd        0.03286 (fit: 1, initial: 0.6)
 Parameter Kd is fitted on log-scale.
 =================================================================================
 Time required: 19.2 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (09:19) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 270 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 2.60 (AIC=13.19). 
+=================================================================================
+ke          6.481 (fit: 1, initial: 2.596) 
+ku          13.42 (fit: 1, initial: 5.289) 
+kon         83.94 (fit: 0, initial: 83.94) 
+B_MAX      0.1225 (fit: 1, initial: 25) 
+Kd        0.03211 (fit: 1, initial: 0.6) 
+=================================================================================
+Parameter Kd is fitted on log-scale.
+=================================================================================
+Time required: 16.2 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (09:22) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 292 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -14.71 (AIC=-21.42). 
+=================================================================================
+ke          5.448 (fit: 1, initial: 2.596) 
+ku          11.01 (fit: 1, initial: 5.289) 
+kon         62.49 (fit: 1, initial: 45) 
+B_MAX       26.74 (fit: 1, initial: 25) 
+Kd            0.6 (fit: 0, initial: 0.6) 
+=================================================================================
+Time required: 25.0 secs

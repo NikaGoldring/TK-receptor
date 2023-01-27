@@ -69,8 +69,9 @@ end
 %% Calculate the derivatives
 % This is the actual model, specified as a system of two ODEs:
 
-dCi = ku * c - ke * Ci - kon * FMS *Ci; % first order bioconcentration
-
+% Calculating the change of ligand concentration in membrane protein
+% fraction with either (1) the Michaelis-Menten kinetics or (2) the second
+% order kinetics. 
 if glo.R_mod == 1 
     dN_RL =  B_MAX * ( Ci / (Kd + Ci) ) ; % Michaelis-Menten kinetics 
 elseif glo.R_mod == 2
@@ -80,6 +81,11 @@ else
     return
 end
 
-dC_tot = dCi + dN_RL ; 
+% Calculating the change of the ligand concentration in the structure
+% compartment.
+dCi = ku * c - ke * Ci - dN_RL * FMS; % first order bioconcentration
+
+%Calculating the change of the total ligand concentration in the organism.
+dC_tot = dCi + dN_RL * FMS; 
 
 dX = [dCi;dN_RL;dC_tot]; % collect all derivatives in one vector dX,

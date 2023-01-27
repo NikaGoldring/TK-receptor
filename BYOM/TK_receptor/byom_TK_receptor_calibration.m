@@ -124,19 +124,19 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
-glo.R_mod = 1 % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 2 % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
 
 glo.FMS = 0.01 ; % normalize for membrane protein content assuming a density of 1 (VMP/VS)
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval scale];
-par.ke    = [2.596  1    1 10  1];  % elimination rate constant, d-1
-par.ku    = [5.289  1    1 20  1];  % uptake rate constant, L/kg/d
-par.kon   = [83.94  1   10 200 1];  % association of ligand-receptor complex
+par.ke    = [2.596  1  1      10  1];  % elimination rate constant, d-1
+par.ku    = [5.289  1  1      20  1];  % uptake rate constant, L/kg/d
+par.kon   = [62.49  1 10     200  1];  % association of ligand-receptor complex
 %par.koff  = [0.00001  1     0 10 1];  % dissociation of ligand-receptor complex
-par.B_MAX = [25   1 0    100   1];  % maximal binding capacity, µmol/kg
-par.Kd    = [0.6    1 0.001 1   0];  % equilibrium dissociation constant, nmol
+par.B_MAX = [26.74  1  1     100  1];  % maximal binding capacity, µmol/kg
+par.Kd    = [0.6    1  0.001   1  0];  % equilibrium dissociation constant, nmol
 
 switch glo.R_mod % make sure that right parameters are fitted
     case 1 % (1) Michaelis-Menten Kinetics, or 
