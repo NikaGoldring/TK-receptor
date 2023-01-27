@@ -149,8 +149,8 @@ end
 % used, based on the data set
 
 % specify the y-axis labels for each state variable
-glo.ylab{1} = ['internal concentration (',char(181),'mol/kg)'];
-glo.ylab{2} = ['receptor-antagonist complex concentration (',char(181),'mol/kg)'];
+glo.ylab{1} = ['Concentration in structure compartment (',char(181),'mol/kg)'];
+glo.ylab{2} = ['Concentration in membrane protein compartment (',char(181),'mol/kg)'];
 glo.ylab{3} = ['total internal concentration (',char(181),'mol/kg)'];
 % specify the x-axis label (same for all states)
 glo.xlab    = 'time (days)';

@@ -3538,3 +3538,24 @@ B_MAX       26.74 (fit: 1, initial: 25)
 Kd            0.6 (fit: 0, initial: 0.6) 
 =================================================================================
 Time required: 25.0 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (11:08) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 130 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -14.90 (AIC=-21.80). 
+=================================================================================
+ke          5.260 (fit: 1, initial: 2.596) 
+ku          10.67 (fit: 1, initial: 5.289) 
+kon         114.8 (fit: 1, initial: 62.49) 
+B_MAX       25.50 (fit: 1, initial: 26.74) 
+Kd            0.6 (fit: 0, initial: 0.6) 
+=================================================================================
+Time required: 14.8 secs

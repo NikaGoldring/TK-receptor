@@ -34,8 +34,8 @@ function dX = derivatives(t,X,par,c,glo)
 % The state variables enter this function in the vector _X_. Here, we give
 % them a more handy name.
 
-Ci   = X(1); % state 1 (internal concentrations) at previous time point
-N_RL = X(2); % state 2 (receptor-agonist complex concentration) at previous time point
+C_S   = X(1); % state 1 (internal concentrations) at previous time point
+C_MP  = X(2); % state 2 (receptor-agonist complex concentration) at previous time point
 
 % these concentrations are both expressed on volume basis.
 
@@ -73,9 +73,9 @@ end
 % fraction with either (1) the Michaelis-Menten kinetics or (2) the second
 % order kinetics. 
 if glo.R_mod == 1 
-    dN_RL =  B_MAX * ( Ci / (Kd + Ci) ) ; % Michaelis-Menten kinetics 
+    dC_MP =  B_MAX * ( C_S / (Kd + C_S) ) ; % Michaelis-Menten kinetics 
 elseif glo.R_mod == 2
-    dN_RL =  kon * Ci * max(0, (B_MAX - N_RL)) ; % second order kinetics
+    dC_MP =  kon * C_S * max(0, (B_MAX - C_MP)) ; % second order kinetics
 else 
     print('Define a receptor kinetic (R_mod)')
     return
@@ -83,9 +83,9 @@ end
 
 % Calculating the change of the ligand concentration in the structure
 % compartment.
-dCi = ku * c - ke * Ci - dN_RL * FMS; % first order bioconcentration
+dC_S = ku * c - ke * C_S - dC_MP * FMS; % first order bioconcentration
 
 %Calculating the change of the total ligand concentration in the organism.
-dC_tot = dCi + dN_RL * FMS; 
+dC_tot = dC_S + dC_MP * FMS; 
 
-dX = [dCi;dN_RL;dC_tot]; % collect all derivatives in one vector dX,
+dX = [dC_S;dC_MP;dC_tot]; % collect all derivatives in one vector dX,
