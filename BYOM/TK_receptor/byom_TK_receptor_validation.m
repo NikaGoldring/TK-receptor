@@ -61,7 +61,7 @@ glo.saveplt = 0; % save all plots as (1) Matlab figures, (2) JPEG file or (3) PD
 % Validation is done for pulsed and constant exposures seperatly,
 % determinded by the switch case here:
 
-glo.V_mod = 2 ; % Validate for (1) pulse or (2) constant exposures
+glo.V_mod = 1 ; % Validate for (1) pulse or (2) constant exposures
 
 switch glo.V_mod % make sure that right parameters are fitted
     case 1 % (1) Pulse exposure
@@ -146,9 +146,11 @@ X0mat(2,:) = 0;      % initial values state 1 (structure internal concentrations
 X0mat(3,:) = 0;      % initial values state 2 (receptor-antagonist complex concentration)
 X0mat(4,:) = 0;      % initial values state 3 (total internal concentrations)
 
-glo.R_mod = 1; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
+glo.R_mod = 2; % choose kinetics for receptor model, (1) Michaelis-Menten Kinetics, or (2) second order kinetics
 %% Initial values for the model parameters
 % Model parameters are part of a 'structure' for easy reference. 
+
+glo.FMS = 0.01 ; % normalize for membrane protein content assuming a density of 1 (VMP/VS)
 
 switch glo.R_mod % make sure that right parameters are fitted
     case 1 % (1) Michaelis-Menten Kinetics
@@ -161,11 +163,11 @@ switch glo.R_mod % make sure that right parameters are fitted
         par.Kd    = [0.01959     1 0    100 1];  % equilibrium dissociation constant, nmol
     case 2 % (2) second order kinetics
         % syntax: par.name = [startvalue fit(0/1) minval maxval];
-        par.ke    = [2.595  1 0.01 100 1];  % elimination rate constant, d-1
-        par.ku    = [5.291   1 0.01 1e6 1];  % uptake rate constant, L/kg/d
-        par.kon   = [83.94       1 0.01 100 1];  % association of ligand-receptor complex
+        par.ke    = [5.213  1 0.01 100 1];  % elimination rate constant, d-1
+        par.ku    = [10.59   1 0.01 1e6 1];  % uptake rate constant, L/kg/d
+        par.kon   = [199.6   1 0.01 200 1];  % association of ligand-receptor complex
         %par.koff  = [0.3116  1 0.01 100 1];  % dissociation of ligand-receptor complex
-        par.B_MAX = [0.2326    1 0    100 1];  % maximal binding capacity, µmol/kg
+        par.B_MAX = [25    1 0    100 1];  % maximal binding capacity, µmol/kg
         par.Kd    = [0     0 0    100 1] % needs to be defined but is not used
 end
 %% Time vector and labels for plots
@@ -180,9 +182,9 @@ switch glo.V_mod % time vector according to validation modus
 end
 
 % specify the y-axis labels for each state variable
-glo.ylab{1} = ['internal concentration (',char(181),'mol/kg)'];
-glo.ylab{2} = ['receptor-antagonist complex concentration (',char(181),'mol/kg)'];
-glo.ylab{3} = ['total internal concentration (',char(181),'mol/kg)'];
+glo.ylab{1} = ['Concentration in structure compartment (',char(181),'mol/kg)'];
+glo.ylab{2} = ['Concentration in membrane protein compartment (',char(181),'mol/kg)'];
+glo.ylab{3} = ['Total internal concentration (',char(181),'mol/kg)'];
 % specify the x-axis label (same for all states)
 glo.xlab    = 'time (days)';
 glo.leglab1 = ''; % legend label before the 'scenario' number
@@ -208,3 +210,32 @@ opt_sim.plot_int = 1;      % interval for plotting (how many time points to do i
 
 sim_and_plot(par,opt_sim); % call the script which calculates and plots (simulation only)
 calc_and_plot(par,opt_plot); % call the plotting routine again to plot raw data
+
+%% Plot results with confidence intervals
+% The following code can be used to make a standard plot (the same as for
+% the fits), but with confidence intervals. Options for confidence bounds
+% on model curves can be set using opt_conf (see prelim_checks).
+% 
+% Use opt_conf.type to tell calc_conf which sample to use: 
+% -1) Skips CIs (zero does the same, and an empty opt_conf as well).
+% 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
+% the model curves from the sample 
+% 2) parameter sets from a joint likelihood region using the shooting 
+% method (limited sets can be used), which will yield (asymptotically) 95% 
+% CIs on predictions
+% 3) as option 2, but using the parameter-space explorer
+
+opt_optim.type = 4; % optimisation method 1) simplex, 4) parameter-space explorer
+opt_optim.fit  = 0; % fit the parameters (1), or don't (0)
+opt_optim.ps_saved = 1; % use saved set for parameter-space explorer (1) or not (0);
+
+% optimise and plot (fitted parameters in par_out)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+% no plotting here; we'll immediately plot with CIs below
+
+opt_conf.type    = 3; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
+opt_conf.lim_set = 0; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
+opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
+
+out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
+calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
