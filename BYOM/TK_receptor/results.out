@@ -3559,3 +3559,431 @@ B_MAX       25.50 (fit: 1, initial: 26.74)
 Kd            0.6 (fit: 0, initial: 0.6) 
 =================================================================================
 Time required: 14.8 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (11:21) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 130 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -14.90 (AIC=-21.80). 
+=================================================================================
+ke          5.260 (fit: 1, initial: 2.596) 
+ku          10.67 (fit: 1, initial: 5.289) 
+kon         114.8 (fit: 1, initial: 62.49) 
+B_MAX       25.50 (fit: 1, initial: 26.74) 
+Kd            0.6 (fit: 0, initial: 0.6) 
+=================================================================================
+Time required: 16.5 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -         10 fit: 1 (norm)
+ku    bounds:          1 -         20 fit: 1 (norm)
+kon   bounds:         10 -        200 fit: 1 (norm)
+B_MAX bounds:          1 -        100 fit: 1 (norm)
+Kd    fixed :        0.6              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) -11.2534
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 83 sets within total CI and 16 within inner. Best fit: -15.0369
+Starting round 3, refining a selection of 463 parameter sets, with 15 tries each
+  Status: 402 sets within total CI and 103 within inner. Best fit: -15.0386
+Starting round 4, refining a selection of 755 parameter sets, with 9 tries each
+  Status: 1433 sets within total CI and 351 within inner. Best fit: -15.0394
+  Finished sampling, running a simplex optimisation ...
+  Status: 1433 sets within total CI and 347 within inner. Best fit: -15.0497
+Starting round 5, creating the profile likelihoods for each parameter
+  Better optimum found when profiling ke: -15.112 (best was -15.0497)
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 1370 sets within total CI and 305 within inner. Best fit: -15.1993
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 6, (extra 1) refining a selection of 106 parameter sets, with 33 tries each
+  Status: 4868 sets within total CI and 2747 within inner. Best fit: -15.1993
+Starting round 7, (extra 2) refining a selection of 4 parameter sets, with 40 tries each
+  Status: 5028 sets within total CI and 2907 within inner. Best fit: -15.1993
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 5227 sets in joint CI and 3048 in inner CI.
+   Propagation set: 772 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      5.278 (     4.177  -     6.739 ) fit: 1 (norm)
+ku    best:      10.73 (     8.523  -     13.54 ) fit: 1 (norm)
+kon   best:      196.2 (     37.73  -     200.0*) fit: 1 (norm)
+B_MAX best:      24.74 (     22.71  -     29.42 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (14:13) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.20 (AIC=-22.40). 
+=================================================================================
+ke          5.278 (fit: 1, initial: NaN) 
+ku          10.73 (fit: 1, initial: NaN) 
+kon         196.2 (fit: 1, initial: NaN) 
+B_MAX       24.74 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Time required: 1 hour, 55 mins, 51.5 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -         10 fit: 1 (norm)
+ku    bounds:          1 -         20 fit: 1 (norm)
+kon   bounds:         10 -        300 fit: 1 (norm)
+B_MAX bounds:          1 -         50 fit: 1 (norm)
+Kd    fixed :        0.6              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) -11.8122
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 132 sets within total CI and 34 within inner. Best fit: -15.2611
+Starting round 3, refining a selection of 719 parameter sets, with 9 tries each
+  Status: 586 sets within total CI and 125 within inner. Best fit: -15.2621
+Starting round 4, refining a selection of 1016 parameter sets, with 6 tries each
+  Status: 1820 sets within total CI and 442 within inner. Best fit: -15.2624
+  Finished sampling, running a simplex optimisation ...
+  Status: 1821 sets within total CI and 442 within inner. Best fit: -15.2639
+Starting round 5, creating the profile likelihoods for each parameter
+  Better optimum found when profiling ke: -15.3622 (best was -15.3085)
+  Extending profile for kon to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 1746 sets within total CI and 382 within inner. Best fit: -15.3996
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 6, (extra 1) refining a selection of 85 parameter sets, with 40 tries each
+  Status: 5146 sets within total CI and 2742 within inner. Best fit: -15.3996
+Starting round 7, (extra 2) refining a selection of 2 parameter sets, with 40 tries each
+  Status: 5226 sets within total CI and 2782 within inner. Best fit: -15.3996
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 5426 sets in joint CI and 2925 in inner CI.
+   Propagation set: 872 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      5.098 (     4.131  -     6.622 ) fit: 1 (norm)
+ku    best:      10.39 (     8.428  -     13.33 ) fit: 1 (norm)
+kon   best:      298.1 (     39.14  -     300.0*) fit: 1 (norm)
+B_MAX best:      24.50 (     22.50  -     29.18 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (16:49) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.40 (AIC=-22.80). 
+=================================================================================
+ke          5.098 (fit: 1, initial: NaN) 
+ku          10.39 (fit: 1, initial: NaN) 
+kon         298.1 (fit: 1, initial: NaN) 
+B_MAX       24.50 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Time required: 2 hours, 9 mins, 42.5 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -         10 fit: 1 (norm)
+ku    bounds:          1 -         20 fit: 1 (norm)
+kon   bounds:         10 -       1000 fit: 1 (norm)
+B_MAX bounds:          1 -         50 fit: 1 (norm)
+Kd    fixed :        0.6              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) -8.0525
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 102 sets within total CI and 29 within inner. Best fit: -15.5044
+Starting round 3, refining a selection of 579 parameter sets, with 12 tries each
+  Status: 583 sets within total CI and 125 within inner. Best fit: -15.6065
+Starting round 4, refining a selection of 1103 parameter sets, with 6 tries each
+  Status: 1919 sets within total CI and 439 within inner. Best fit: -15.6287
+  Finished sampling, running a simplex optimisation ...
+  Status: 1919 sets within total CI and 440 within inner. Best fit: -15.63
+Starting round 5, creating the profile likelihoods for each parameter
+  Extending profile for kon to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 1843 sets within total CI and 397 within inner. Best fit: -15.744
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 6, (extra 1) refining a selection of 91 parameter sets, with 38 tries each
+  Status: 5301 sets within total CI and 2677 within inner. Best fit: -15.744
+Starting round 7, (extra 2) refining a selection of 2 parameter sets, with 40 tries each
+  Status: 5381 sets within total CI and 2757 within inner. Best fit: -15.744
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 5580 sets in joint CI and 2899 in inner CI.
+   Propagation set: 730 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      4.942 (     4.088  -     6.394 ) fit: 1 (norm)
+ku    best:      10.04 (     8.347  -     12.88 ) fit: 1 (norm)
+kon   best:      976.1 (     45.94  -     1000.*) fit: 1 (norm)
+B_MAX best:      24.25 (     22.32  -     28.74 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 27-Jan-2023 (21:08) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.74 (AIC=-23.49). 
+=================================================================================
+ke          4.942 (fit: 1, initial: NaN) 
+ku          10.04 (fit: 1, initial: NaN) 
+kon         976.1 (fit: 1, initial: NaN) 
+B_MAX       24.25 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Time required: 4 hours, 8 mins, 23.3 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:          1 -         10 fit: 1 (norm)
+ku    bounds:          1 -         20 fit: 1 (norm)
+kon   bounds:         10 -        200 fit: 1 (log)
+B_MAX bounds:          1 -         50 fit: 1 (norm)
+Kd    fixed :        0.6              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) -11.6948
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 78 sets within total CI and 13 within inner. Best fit: -15.0157
+Starting round 3, refining a selection of 695 parameter sets, with 10 tries each
+  Status: 426 sets within total CI and 68 within inner. Best fit: -15.1512
+Starting round 4, refining a selection of 968 parameter sets, with 7 tries each
+  Status: 1673 sets within total CI and 285 within inner. Best fit: -15.1526
+  Next round will focus on inner rim (outer rim has enough points)
+Starting round 5, refining a selection of 402 parameter sets, with 7 tries each
+  Status: 3376 sets within total CI and 825 within inner. Best fit: -15.1526
+  Finished sampling, running a simplex optimisation ...
+  Status: 3376 sets within total CI and 824 within inner. Best fit: -15.154
+Starting round 6, creating the profile likelihoods for each parameter
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 3328 sets within total CI and 789 within inner. Best fit: -15.1953
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 7, (extra 1) refining a selection of 18 parameter sets, with 40 tries each
+  Status: 4048 sets within total CI and 1309 within inner. Best fit: -15.1953
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 4247 sets in joint CI and 1444 in inner CI.
+   Propagation set: 620 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:      5.213 (     4.175  -     6.745 ) fit: 1 (norm)
+ku    best:      10.59 (     8.520  -     13.56 ) fit: 1 (norm)
+kon   best:      199.6 (     37.64  -     200.0*) fit: 1 (log)
+B_MAX best:      25.00 (     22.68  -     29.42 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 30-Jan-2023 (13:55) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.20 (AIC=-22.39). 
+=================================================================================
+ke          5.213 (fit: 1, initial: NaN) 
+ku          10.59 (fit: 1, initial: NaN) 
+kon         199.6 (fit: 1, initial: NaN) 
+B_MAX       25.00 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 1 hour, 41 mins, 13.9 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_validation 
+   Analysis date : 30-Jan-2023 (17:20) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 5x12, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 254 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -1.15 (AIC=5.70). 
+=================================================================================
+ke          2.763 (fit: 1, initial: 5.213) 
+ku          5.343 (fit: 1, initial: 10.59) 
+kon         189.5 (fit: 1, initial: 199.6) 
+B_MAX       23.35 (fit: 1, initial: 25) 
+Kd              0 (fit: 0, initial:  0) 
+=================================================================================
+Time required: 43.7 secs
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim_ps', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_optim_ps.m', 108)" style="font-weight:bold">calc_optim_ps</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\parspace\calc_optim_ps.m',108,0)">line 108</a>)
+There is no confidence set with filename byom_TK_receptor_validation_PS.mat found, so run calibration (with correct settings) first.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\calc_optim.m', 119)" style="font-weight:bold">calc_optim</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\engine\calc_optim.m',119,0)">line 119</a>)
+        [pmat,pmat_print,FVAL,names_out] = calc_optim_ps(pmat,opt_optim);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('byom_TK_receptor_validation', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\byom_TK_receptor_validation.m', 233)" style="font-weight:bold">byom_TK_receptor_validation</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\TK-receptor\BYOM\TK_receptor\byom_TK_receptor_validation.m',233,0)">line 233</a>)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+} 
+byom_TK_receptor
+=================================================================================
+Displaying and plotting optimisation results from a saved set
+=================================================================================
+Best fit parameter set and 95% bounds from the saved set:
+==========================================================================
+ke    best:      5.213 (     4.175  -     6.745 ) fit: 1 (norm)
+ku    best:      10.59 (     8.520  -     13.56 ) fit: 1 (norm)
+kon   best:      199.6 (     37.64  -     200.0*) fit: 1 (log)
+B_MAX best:      25.00 (     22.68  -     29.42 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_validation 
+   Analysis date : 30-Jan-2023 (17:39) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 13x6, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.20 (AIC=-22.39). 
+=================================================================================
+ke          5.213 (fit: 1, initial: NaN) 
+ku          10.59 (fit: 1, initial: NaN) 
+kon         199.6 (fit: 1, initial: NaN) 
+B_MAX       25.00 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 41.7 secs
+=================================================================================
+Displaying and plotting optimisation results from a saved set
+=================================================================================
+Best fit parameter set and 95% bounds from the saved set:
+==========================================================================
+ke    best:      5.213 (     4.175  -     6.745 ) fit: 1 (norm)
+ku    best:      10.59 (     8.520  -     13.56 ) fit: 1 (norm)
+kon   best:      199.6 (     37.64  -     200.0*) fit: 1 (log)
+B_MAX best:      25.00 (     22.68  -     29.42 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_validation 
+   Analysis date : 30-Jan-2023 (17:42) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 5x12, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.20 (AIC=-22.39). 
+=================================================================================
+ke          5.213 (fit: 1, initial: NaN) 
+ku          10.59 (fit: 1, initial: NaN) 
+kon         199.6 (fit: 1, initial: NaN) 
+B_MAX       25.00 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 1 min, 15.4 secs
+=================================================================================
+Displaying and plotting optimisation results from a saved set
+=================================================================================
+Best fit parameter set and 95% bounds from the saved set:
+==========================================================================
+ke    best:      5.213 (     4.175  -     6.745 ) fit: 1 (norm)
+ku    best:      10.59 (     8.520  -     13.56 ) fit: 1 (norm)
+kon   best:      199.6 (     37.64  -     200.0*) fit: 1 (log)
+B_MAX best:      25.00 (     22.68  -     29.42 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_validation 
+   Analysis date : 30-Jan-2023 (17:45) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 13x6, continuous data, power 0.50 transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value -15.20 (AIC=-22.39). 
+=================================================================================
+ke          5.213 (fit: 1, initial: NaN) 
+ku          10.59 (fit: 1, initial: NaN) 
+kon         199.6 (fit: 1, initial: NaN) 
+B_MAX       25.00 (fit: 1, initial: NaN) 
+Kd            0.6 (fit: 0, initial: NaN) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 38.9 secs

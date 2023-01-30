@@ -131,11 +131,11 @@ glo.R_mod = 2 % choose kinetics for receptor model, (1) Michaelis-Menten Kinetic
 glo.FMS = 0.01 ; % normalize for membrane protein content assuming a density of 1 (VMP/VS)
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval scale];
-par.ke    = [2.596  1  1      10  1];  % elimination rate constant, d-1
-par.ku    = [5.289  1  1      20  1];  % uptake rate constant, L/kg/d
-par.kon   = [62.49  1 10     200  1];  % association of ligand-receptor complex
+par.ke    = [5.278  1  1      10  1];  % elimination rate constant, d-1
+par.ku    = [10.73  1  1      20  1];  % uptake rate constant, L/kg/d
+par.kon   = [196.2  1 10     200  0];  % association of ligand-receptor complex
 %par.koff  = [0.00001  1     0 10 1];  % dissociation of ligand-receptor complex
-par.B_MAX = [26.74  1  1     100  1];  % maximal binding capacity, µmol/kg
+par.B_MAX = [24.74  1  1      50  1];  % maximal binding capacity, µmol/kg
 par.Kd    = [0.6    1  0.001   1  0];  % equilibrium dissociation constant, nmol
 
 switch glo.R_mod % make sure that right parameters are fitted
@@ -151,7 +151,7 @@ end
 % specify the y-axis labels for each state variable
 glo.ylab{1} = ['Concentration in structure compartment (',char(181),'mol/kg)'];
 glo.ylab{2} = ['Concentration in membrane protein compartment (',char(181),'mol/kg)'];
-glo.ylab{3} = ['total internal concentration (',char(181),'mol/kg)'];
+glo.ylab{3} = ['Total internal concentration (',char(181),'mol/kg)'];
 % specify the x-axis label (same for all states)
 glo.xlab    = 'time (days)';
 glo.leglab1 = ''; % legend label before the 'scenario' number
@@ -160,50 +160,50 @@ glo.leglab2 = [char(181),'M']; % legend label after the 'scenario' number
 prelim_checks % script to perform some preliminary checks and set things up
 % Note: prelim_checks also fills all the options (opt_...) with defauls, so
 % modify options after this call, if needed.
-par_out = calc_optim(par,opt_optim); % start the optimisation
-calc_and_plot(par_out,opt_plot); % call the plotting routine again to plot fits with CIs
-
-% %% Calculations and plotting
-% % Here, the function is called that will do the calculation and the plotting.
-% % Options for the plotting can be set using opt_plot (see prelim_checks.m).
-% % Options for the optimsation routine can be set using opt_optim. Options
-% % for the ODE solver are part of the global glo. 
-% 
-% opt_optim.type = 1; % optimisation method 1) simplex, 4) parameter-space explorer
-% opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
-% opt_optim.it   = 0; % show iterations of the simplex optimisation (1, default) or not (0)
-% opt_plot.bw    = 0; % plot in black and white
-% opt_plot.cn    = 0; % if set to 1, connect model line to points (only for bw=1)
-% opt_plot.annot = 1; % annotations in sub-plot: text box with parameter estimates or overall legend
-% glo.useode     = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
-% glo.stiff      = 0; % use ode45 with very strict tolerances
-% 
-% opt_optim.ps_plots = 0; % when set to 1, makes intermediate plots to monitor progress of parameter-space explorer
-% opt_optim.ps_profs = 1; % when set to 1, makes profiles and additional sampling for parameter-space explorer
-% opt_optim.ps_rough = 1; % set to 1 for rough settings of parameter-space explorer, 0 for settings as in openGUTS
-% opt_optim.ps_saved = 0; % use saved set for parameter-space explorer (1) or not (0);
-% 
-% % optimise and plot (fitted parameters in par_out)
 % par_out = calc_optim(par,opt_optim); % start the optimisation
-% % no plotting here; we'll immediately plot with CIs below
+% calc_and_plot(par_out,opt_plot); % call the plotting routine again to plot fits with CIs
+
+%% Calculations and plotting
+% Here, the function is called that will do the calculation and the plotting.
+% Options for the plotting can be set using opt_plot (see prelim_checks.m).
+% Options for the optimsation routine can be set using opt_optim. Options
+% for the ODE solver are part of the global glo. 
+
+opt_optim.type = 4; % optimisation method 1) simplex, 4) parameter-space explorer
+opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
+opt_optim.it   = 0; % show iterations of the simplex optimisation (1, default) or not (0)
+opt_plot.bw    = 0; % plot in black and white
+opt_plot.cn    = 0; % if set to 1, connect model line to points (only for bw=1)
+opt_plot.annot = 1; % annotations in sub-plot: text box with parameter estimates or overall legend
+glo.useode     = 1; % use the analytical solution in simplefun.m (0) or the ODE solution in derivatives (1)
+glo.stiff      = 0; % use ode45 with very strict tolerances
+
+opt_optim.ps_plots = 0; % when set to 1, makes intermediate plots to monitor progress of parameter-space explorer
+opt_optim.ps_profs = 1; % when set to 1, makes profiles and additional sampling for parameter-space explorer
+opt_optim.ps_rough = 1; % set to 1 for rough settings of parameter-space explorer, 0 for settings as in openGUTS
+opt_optim.ps_saved = 0; % use saved set for parameter-space explorer (1) or not (0);
+
+% optimise and plot (fitted parameters in par_out)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+% no plotting here; we'll immediately plot with CIs below
+
+%% Plot results with confidence intervals
+% The following code can be used to make a standard plot (the same as for
+% the fits), but with confidence intervals. Options for confidence bounds
+% on model curves can be set using opt_conf (see prelim_checks).
 % 
-% %% Plot results with confidence intervals
-% % The following code can be used to make a standard plot (the same as for
-% % the fits), but with confidence intervals. Options for confidence bounds
-% % on model curves can be set using opt_conf (see prelim_checks).
-% % 
-% % Use opt_conf.type to tell calc_conf which sample to use: 
-% % -1) Skips CIs (zero does the same, and an empty opt_conf as well).
-% % 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
-% % the model curves from the sample 
-% % 2) parameter sets from a joint likelihood region using the shooting 
-% % method (limited sets can be used), which will yield (asymptotically) 95% 
-% % CIs on predictions
-% % 3) as option 2, but using the parameter-space explorer
-% 
-% opt_conf.type    = 3; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
-% opt_conf.lim_set = 0; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
-% opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
-% 
-% out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
-% calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
+% Use opt_conf.type to tell calc_conf which sample to use: 
+% -1) Skips CIs (zero does the same, and an empty opt_conf as well).
+% 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
+% the model curves from the sample 
+% 2) parameter sets from a joint likelihood region using the shooting 
+% method (limited sets can be used), which will yield (asymptotically) 95% 
+% CIs on predictions
+% 3) as option 2, but using the parameter-space explorer
+
+opt_conf.type    = 3; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
+opt_conf.lim_set = 0; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
+opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
+
+out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
+calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
