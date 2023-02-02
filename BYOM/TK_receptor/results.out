@@ -3987,3 +3987,72 @@ Kd            0.6 (fit: 0, initial: NaN)
 Parameter kon is fitted on log-scale.
 =================================================================================
 Time required: 38.9 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 31-Jan-2023 (10:13) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 128 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -18.63 (AIC=-29.27). 
+=================================================================================
+ke          4.966 (fit: 1, initial: 5.278) 
+ku          11.50 (fit: 1, initial: 10.73) 
+kon         188.2 (fit: 1, initial: 196.2) 
+B_MAX       23.39 (fit: 1, initial: 24.74) 
+Kd            0.6 (fit: 0, initial: 0.6) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 15.6 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 31-Jan-2023 (10:15) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 128 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -18.63 (AIC=-29.27). 
+=================================================================================
+ke          4.966 (fit: 1, initial: 5.278) 
+ku          11.50 (fit: 1, initial: 10.73) 
+kon         188.2 (fit: 1, initial: 196.2) 
+B_MAX       23.39 (fit: 1, initial: 24.74) 
+Kd            0.6 (fit: 0, initial: 0.6) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 15.0 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_receptor_calibration 
+   Analysis date : 31-Jan-2023 (10:16) 
+   Data entered  :
+     data state 1: 0x0, no data.
+     data state 2: 0x0, no data.
+     data state 3: 18x14, continuous data, power 0.50 transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 128 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value -18.63 (AIC=-29.27). 
+=================================================================================
+ke          4.966 (fit: 1, initial: 5.278) 
+ku          11.50 (fit: 1, initial: 10.73) 
+kon         188.2 (fit: 1, initial: 196.2) 
+B_MAX       23.39 (fit: 1, initial: 24.74) 
+Kd            0.6 (fit: 0, initial: 0.6) 
+=================================================================================
+Parameter kon is fitted on log-scale.
+=================================================================================
+Time required: 14.9 secs

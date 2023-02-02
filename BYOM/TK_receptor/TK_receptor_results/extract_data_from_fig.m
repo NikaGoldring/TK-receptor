@@ -3,7 +3,7 @@ close all;
 clc;
 
 %% Specify file for data extraction
-open('20221122_fit_calibration_2nd.fig') ; % choose corresponding file name of MATLAB figure
+open('20230130_calibration_fit.fig') ; % choose corresponding file name of MATLAB figure
 h = findobj(gcf, 'Type', 'line');
 
 % NOTE: As there were no input data for the metabolite provided at 07
@@ -132,5 +132,6 @@ fig01(:,42) = ydata41 ;
 fig01(:,43) = ydata42 ;
 fig01(:,44) = ydata43 ; 
 fig01(:,45) = ydata44 ;
+fig01(:,46) = ydata45 ;
 
-dlmwrite('20230112_calibration_fit_2nd.txt', fig01, ','); % write dataframe in txt
+dlmwrite('20230131_calibration_fit_2nd.txt', fig01, ','); % write dataframe in txt

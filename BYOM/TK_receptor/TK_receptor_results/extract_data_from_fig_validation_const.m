@@ -3,7 +3,7 @@ close all;
 clc;
 
 %% Specify file for data extraction
-open('20230112_validation_const_2nd.fig') ; % choose corresponding file name of MATLAB figure
+open('20230130_validation_const_2nd.fig') ; % choose corresponding file name of MATLAB figure
 h = findobj(gcf, 'Type', 'line');
 
 % NOTE: As there were no input data for the metabolite provided at 07
@@ -58,4 +58,4 @@ fig01(:,11) = ydata10 ;
 fig01(:,12) = ydata11 ;
 fig01(:,13) = ydata12 ;
 
-dlmwrite('20230113_validation_const_2nd.txt', fig01, ','); % write dataframe in txt
+%dlmwrite('20230131_validation_const_2nd.txt', fig01, ','); % write dataframe in txt
