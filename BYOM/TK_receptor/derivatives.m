@@ -75,7 +75,7 @@ end
 if glo.R_mod == 1 
     dC_MP =  B_MAX * ( C_S / (Kd + C_S) ) ; % Michaelis-Menten kinetics 
 elseif glo.R_mod == 2
-    dC_MP =  kon * C_S * max(0, (B_MAX - C_MP)) ; % second order kinetics
+    dC_MP =  kon * C_S * (B_MAX - C_MP) ; % second order kinetics
 else 
     print('Define a receptor kinetic (R_mod)')
     return
